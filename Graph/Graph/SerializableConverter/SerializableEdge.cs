@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Graph.ToSerialize
+namespace Graph.SerializableConverter
 {
     [System.Serializable]
-    public class SerializedEdge<TypeOfEdgeData>
+    public class SerializableEdge<TypeOfEdgeData>
     {
         public int NodeFromId { get; set; }
 

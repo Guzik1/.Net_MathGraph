@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Graph</name>
+    </assembly>
+    <members>
+        <member name="T:Graph.Edge`2">
+            <summary>
+            Object repersent a edge from graph.
+            </summary>
+            <typeparam name="T">Type of node data.</typeparam>
+            <typeparam name="R">Type of edge data.</typeparam>
+        </member>
+        <member name="P:Graph.Edge`2.From">
+            <summary>
+            The start node.
+            </summary>
+        </member>
+        <member name="P:Graph.Edge`2.To">
+            <summary>
+            The end node.
+            </summary>
+        </member>
+        <member name="P:Graph.Edge`2.Data">
+            <summary>
+            Edge data.
+            </summary>
+        </member>
+        <member name="P:Graph.Edge`2.Weight">
+            <summary>
+            Edge weight
+            </summary>
+        </member>
+        <member name="M:Graph.Edge`2.ToString">
+            <summary>
+            Convert this object to string.
+            </summary>
+            <returns>String of object</returns>
+        </member>
+        <member name="T:Graph.Graph`2">
+            <summary>
+            This class represent a mathematical graph with data in nodes and edges.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
+        </member>
+        <member name="M:Graph.Graph`2.GetShortestPathDijkstraAlgorithm(Graph.Node{`0,`1},Graph.Node{`0,`1})">
+            <summary>
+            Algorithm to get a short Dijkstra path.
+            </summary>
+            <param name="source">Source node to start of the path.</param>
+            <param name="target">Destination node to end of the path.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Graph.Graph`2.IsDirected">
+            <summary>
+            Return true when graph is directed or otherwise false
+            </summary>
+        </member>
+        <member name="P:Graph.Graph`2.IsWeighted">
+            <summary>
+            Return true when graph is weighted or otherwise false
+            </summary>
+        </member>
+        <member name="M:Graph.Graph`2.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Inicjalize weighted and directed graph, select graph directed and weighted type.
+            </summary>
+            <param name="isDirected">Set true to direct a graph, for undirected set false.</param>
+            <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
+        </member>
+        <member name="M:Graph.Graph`2.#ctor(System.Boolean)">
+            <summary>
+            Inicjalize weighted graph, select graph weighted type. (Set isDirected to false)
+            </summary>
+            <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
+        </member>
+        <member name="M:Graph.Graph`2.#ctor">
+            <summary>
+            Inicjalize standard graph, unweighted and undirected.
+            </summary>
+        </member>
+        <member name="P:Graph.Graph`2.Item(System.Int32,System.Int32)">
+            <summary>
+            Get the edge between two nodes (from, to).
+            </summary>
+            <param name="from">Edge FROM the node.</param>
+            <param name="to">Edge TO the node.</param>
+            <returns>Edge between node FROM and node TO.</returns>
+        </member>
+        <member name="P:Graph.Graph`2.Item(System.Int32)">
+            <summary>
+            Get the node from node number.
+            </summary>
+            <param name="nodeNumber">Number of node.</param>
+            <returns>Node</returns>
+        </member>
+        <member name="P:Graph.Graph`2.NodesCount">
+            <summary>
+            Get nodes count in graph.
+            </summary>
+            <returns>Nodes count</returns>
+        </member>
+        <member name="M:Graph.Graph`2.AddNode(`0)">
+            <summary>
+            Add node to graph.
+            </summary>
+            <param name="value">Data in node.</param>
+            <returns>Return added node to list of all nodes.</returns>
+        </member>
+        <member name="M:Graph.Graph`2.RemoveNode(Graph.Node{`0,`1})">
+            <summary>
+            Remove node from the graph.
+            </summary>
+            <param name="nodeToRemove">Node to remove.</param>
+        </member>
+        <member name="M:Graph.Graph`2.AddEdge(Graph.Node{`0,`1},Graph.Node{`0,`1},System.Int32,`1)">
+            <summary>
+            Add edge between two node (from, to) and/or weight and/or data in edge.
+            </summary>
+            <param name="from">Node from edge start.</param>
+            <param name="to">Node to edge end.</param>
+            <param name="weight">Weight of edge, default 0 (use for weighted graph)</param>
+            <param name="edgeData">The edge data, default 'default of data'.</param>
+        </member>
+        <member name="M:Graph.Graph`2.RemoveEdge(Graph.Node{`0,`1},Graph.Node{`0,`1})">
+            <summary>
+            Remove a edge between node FROM and node TO.
+            </summary>
+            <param name="from">Node of start edge.</param>
+            <param name="to">Node of end edge.</param>
+        </member>
+        <member name="M:Graph.Graph`2.GetAllEdges">
+            <summary>
+            Get all of edge in graph.
+            </summary>
+            <returns>List of all edges in graph.</returns>
+        </member>
+        <member name="T:Graph.Node`2">
+            <summary>
+            Represent a Node in graph.
+            </summary>
+            <typeparam name="T">Type of Node data.</typeparam>
+            <typeparam name="R">Type of Edge data.</typeparam>
+        </member>
+        <member name="P:Graph.Node`2.Index">
+            <summary>
+            Index of node (use inside).
+            </summary>
+        </member>
+        <member name="P:Graph.Node`2.Data">
+            <summary>
+            Data of node.
+            </summary>
+        </member>
+        <member name="P:Graph.Node`2.Neighbors">
+            <summary>
+            List of neighboring nodes (nodes connected by the edge).
+            </summary>
+        </member>
+        <member name="P:Graph.Node`2.Weights">
+            <summary>
+            Weight of edge, from this to neighboring nodes.
+            </summary>
+        </member>
+        <member name="P:Graph.Node`2.EdgeData">
+            <summary>
+            Data in edge to neighboring nodes 
+            </summary>
+        </member>
+        <member name="M:Graph.Node`2.ToString">
+            <summary>
+            Method to converting this object to string.
+            </summary>
+            <returns>String of Node object.</returns>
+        </member>
+    </members>
+</doc>

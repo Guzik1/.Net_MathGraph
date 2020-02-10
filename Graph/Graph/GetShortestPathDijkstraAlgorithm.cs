@@ -15,30 +15,46 @@ namespace Graph
         /// <returns></returns>
         public List<Edge<TypeOfNodeData, TypeOfEdgeData>> GetShortestPathDijkstraAlgorithm(Node<TypeOfNodeData, TypeOfEdgeData> source, Node<TypeOfNodeData, TypeOfEdgeData> target)
         {
-            int[] previous = new int[Nodes.Count];
-            Fill(previous, -1);
+            ShortedPathDijkstra<TypeOfNodeData, TypeOfEdgeData> shortedPath = new ShortedPathDijkstra<TypeOfNodeData, TypeOfEdgeData>(this);
 
-            int[] distances = new int[Nodes.Count];
-            Fill(distances, int.MaxValue);
-            distances[source.Index] = 0;
+            return shortedPath.GetShortestPathDijkstra(source, target);
+        }
+    }
 
-            SimplePriorityQueue<Node<TypeOfNodeData, TypeOfEdgeData>> nodes = new SimplePriorityQueue<Node<TypeOfNodeData, TypeOfEdgeData>>();
+    internal class ShortedPathDijkstra<TypeOfNodeData, TypeOfEdgeData>
+    {
+        Graph<TypeOfNodeData, TypeOfEdgeData> graph;
 
-            for (int i = 0; i < Nodes.Count; i++)
-                nodes.Enqueue(Nodes[i], distances[i]);
+        internal ShortedPathDijkstra(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
+            => this.graph = graph;
 
-            while(nodes.Count != 0)
+        int[] previous;
+        int[] distances;
+
+        Node<TypeOfNodeData, TypeOfEdgeData> source;
+        Node<TypeOfNodeData, TypeOfEdgeData> target;
+
+        SimplePriorityQueue<Node<TypeOfNodeData, TypeOfEdgeData>> nodes = new SimplePriorityQueue<Node<TypeOfNodeData, TypeOfEdgeData>>();
+
+        internal List<Edge<TypeOfNodeData, TypeOfEdgeData>> GetShortestPathDijkstra(Node<TypeOfNodeData, TypeOfEdgeData> source, Node<TypeOfNodeData, TypeOfEdgeData> target)
+        {
+            this.source = source;
+            this.target = target;
+
+            Inicjalize();
+
+            while (nodes.Count != 0)
             {
                 Node<TypeOfNodeData, TypeOfEdgeData> node = nodes.Dequeue();
 
-                for(int i = 0; i < node.Neighbors.Count; i++)
+                for (int i = 0; i < node.Neighbors.Count; i++)
                 {
                     Node<TypeOfNodeData, TypeOfEdgeData> neighbor = node.Neighbors[i];
 
                     int weight = i < node.Weights.Count ? node.Weights[i] : 0;
                     int weightTotal = distances[node.Index] + weight;
 
-                    if(distances[neighbor.Index] > weightTotal)
+                    if (distances[neighbor.Index] > weightTotal)
                     {
                         distances[neighbor.Index] = weightTotal;
 
@@ -49,11 +65,30 @@ namespace Graph
                 }
             }
 
+            return BuildResult();
+        }
+
+        void Inicjalize()
+        {
+            previous = new int[graph.NodesCount];
+            distances = new int[graph.NodesCount];
+
+            Fill(previous, -1);
+
+            Fill(distances, int.MaxValue);
+            distances[source.Index] = 0;
+
+            for (int i = 0; i < graph.NodesCount; i++)
+                nodes.Enqueue(graph[i], distances[i]);
+        }
+
+        List<Edge<TypeOfNodeData, TypeOfEdgeData>> BuildResult()
+        {
             List<int> indices = new List<int>();
 
             int index = target.Index;
 
-            while(index >= 0)
+            while (index >= 0)
             {
                 indices.Add(index);
                 index = previous[index];
@@ -63,9 +98,9 @@ namespace Graph
 
             List<Edge<TypeOfNodeData, TypeOfEdgeData>> result = new List<Edge<TypeOfNodeData, TypeOfEdgeData>>();
 
-            for(int i = 0; i < indices.Count - 1; i++)
+            for (int i = 0; i < indices.Count - 1; i++)
             {
-                Edge<TypeOfNodeData, TypeOfEdgeData> edge = this[indices[i], indices[i + 1]];
+                Edge<TypeOfNodeData, TypeOfEdgeData> edge = graph[indices[i], indices[i + 1]];
 
                 result.Add(edge);
             }
@@ -73,11 +108,11 @@ namespace Graph
             return result;
         }
 
-        void Fill<Q>(Q[] array, Q value)
+        void Fill<T>(T[] array, T value)
         {
             for (int i = 0; i < array.Length; i++)
                 array[i] = value;
-                
+
             //Parallel.For(0, array.Length, i => array[i] = value);
         }
     }

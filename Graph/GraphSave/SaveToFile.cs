@@ -18,20 +18,20 @@ namespace GraphSave
         public void ChangeDirectory(string path) =>
             this.path = path;
 
-        public SerializedGraphDataModel<TypeOfNodeData, TypeOfEdgeData> Load()
+        public SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> Load()
         {
             IFormatter formatter = new BinaryFormatter();
             if (File.Exists(path))
             {
                 Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
-                return (SerializedGraphDataModel<TypeOfNodeData, TypeOfEdgeData>) formatter.Deserialize(stream);
+                return (SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData>) formatter.Deserialize(stream);
             }
 
             throw new IOException("File doesn't exist in path: " + path);
         }
 
-        public void Save(SerializedGraphDataModel<TypeOfNodeData, TypeOfEdgeData> save)
+        public void Save(SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> save)
         {
             IFormatter formatter = new BinaryFormatter();
             Directory.CreateDirectory(Path.GetDirectoryName(path));

@@ -1,6 +1,5 @@
-﻿using Graph.ToSerialize;
+﻿using Graph.SerializableConverter;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Graph
 {
@@ -9,11 +8,16 @@ namespace Graph
     /// </summary>
     /// <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
     /// <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
-    //[System.Serializable]
     public partial class Graph<TypeOfNodeData, TypeOfEdgeData>
     {
+        /// <summary>
+        /// Return true when graph is directed or otherwise false
+        /// </summary>
         public bool IsDirected { get; } = false;
 
+        /// <summary>
+        /// Return true when graph is weighted or otherwise false
+        /// </summary>
         public bool IsWeighted { get; } = false;
 
         List<Node<TypeOfNodeData, TypeOfEdgeData>> Nodes { get; set; } = new List<Node<TypeOfNodeData, TypeOfEdgeData>>();
@@ -30,7 +34,7 @@ namespace Graph
         }
 
         /// <summary>
-        /// Inicjalize weighted graph, select graph weighted type. (Set Directed to false)
+        /// Inicjalize weighted graph, select graph weighted type. (Set isDirected to false)
         /// </summary>
         /// <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
         public Graph(bool isWeighted = false)
@@ -40,7 +44,7 @@ namespace Graph
         }
 
         /// <summary>
-        /// Inicjalize standard graph, select graph weighted type. (Set isDirected and isWeighted to false)
+        /// Inicjalize standard graph, unweighted and undirected.
         /// </summary>
         public Graph()
         {
@@ -128,7 +132,6 @@ namespace Graph
             foreach(Node<TypeOfNodeData, TypeOfEdgeData> node in Nodes)
                 RemoveEdge(node, nodeToRemove);
         }
-
 
         /// <summary>
         /// Add edge between two node (from, to) and/or weight and/or data in edge.

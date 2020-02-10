@@ -7,8 +7,8 @@ namespace GraphSave
 {
     public interface ISavable<TypeOfNodeData, TypeOfEdgeData>
     {
-        void Save(SerializedGraphDataModel<TypeOfNodeData, TypeOfEdgeData> save);
+        void Save(SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> save);
 
-        SerializedGraphDataModel<TypeOfNodeData, TypeOfEdgeData> Load();
+        SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> Load();
     }
 }
