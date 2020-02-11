@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using Graph.ToSerialize;
+using Graph.SerializableConverter;
 
 namespace GraphSave
 {
