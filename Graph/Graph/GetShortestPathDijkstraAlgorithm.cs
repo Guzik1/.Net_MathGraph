@@ -43,6 +43,7 @@ namespace Graph
 
             Inicjalize();
 
+            // For performance, don't refactor this loop;
             while (nodes.Count != 0)
             {
                 Node<TypeOfNodeData, TypeOfEdgeData> node = nodes.Dequeue();
@@ -74,8 +75,8 @@ namespace Graph
             distances = new int[graph.NodesCount];
 
             Fill(previous, -1);
-
             Fill(distances, int.MaxValue);
+
             distances[source.Index] = 0;
 
             for (int i = 0; i < graph.NodesCount; i++)
