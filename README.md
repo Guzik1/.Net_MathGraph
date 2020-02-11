@@ -12,7 +12,9 @@ This is a simple implement a mathematical graph library that provides stores dat
 - graph to serializable graph and conversely converter (easy to save)!
 
 ## Setup
-Compiling bin library in /bin folder. NuGet package available soon.
+Compiling bin library in /bin folder. <br />
+Copy Graph and OptymalizedPriorityQueue (.dll files) to your project. <br />
+NuGet package available soon.
 
 ## Simple code example
 Data in node and edge is int. Graph is unweighted and undirected (simple graph)
