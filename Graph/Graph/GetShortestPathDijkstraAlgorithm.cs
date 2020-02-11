@@ -15,17 +15,17 @@ namespace Graph
         /// <returns></returns>
         public List<Edge<TypeOfNodeData, TypeOfEdgeData>> GetShortestPathDijkstraAlgorithm(Node<TypeOfNodeData, TypeOfEdgeData> source, Node<TypeOfNodeData, TypeOfEdgeData> target)
         {
-            ShortedPathDijkstra<TypeOfNodeData, TypeOfEdgeData> shortedPath = new ShortedPathDijkstra<TypeOfNodeData, TypeOfEdgeData>(this);
+            ShortestPathDijkstra<TypeOfNodeData, TypeOfEdgeData> shortedPath = new ShortestPathDijkstra<TypeOfNodeData, TypeOfEdgeData>(this);
 
             return shortedPath.GetShortestPathDijkstra(source, target);
         }
     }
 
-    internal class ShortedPathDijkstra<TypeOfNodeData, TypeOfEdgeData>
+    internal class ShortestPathDijkstra<TypeOfNodeData, TypeOfEdgeData>
     {
         Graph<TypeOfNodeData, TypeOfEdgeData> graph;
 
-        internal ShortedPathDijkstra(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
+        internal ShortestPathDijkstra(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
             => this.graph = graph;
 
         int[] previous;
