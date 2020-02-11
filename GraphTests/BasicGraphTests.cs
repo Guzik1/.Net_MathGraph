@@ -6,24 +6,27 @@ namespace GraphTests
 {
     public class BasicGraphTests
     {
+        Graph<int, int> graph;
+
+        [Test]
+        public void CreateSimpleGraphTest()
+        {
+            Assert.IsFalse(graph.IsDirected);
+            Assert.IsFalse(graph.IsWeighted);
+        }
+
         [Test]
         public void AddNodeTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
+            InicjalizeGraph(10);
 
-            for (int i = 0; i < 10; i++)
-                graph.AddNode(i);
-             
             Assert.AreEqual(10, graph.NodesCount);
         }
 
         [Test]
         public void RemoveNodeTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
-
-            for (int i = 0; i < 10; i++)
-                graph.AddNode(i);
+            InicjalizeGraph(10);
 
             graph.RemoveNode(graph[1]);
             graph.RemoveNode(graph[2]);
@@ -36,10 +39,7 @@ namespace GraphTests
         [Test]
         public void AddEdgeTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
-
-            for (int i = 0; i < 10; i++)
-                graph.AddNode(i);
+            InicjalizeGraph(10);
 
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
@@ -57,6 +57,8 @@ namespace GraphTests
             graph.AddEdge(graph[5], graph[7]);
 
             Assert.IsNotNull(graph[0, 1]);
+            Assert.IsNotNull(graph[1, 0]);
+
             Assert.IsNotNull(graph[0, 2]);
             Assert.IsNotNull(graph[1, 3]);
             Assert.IsNotNull(graph[3, 2]);
@@ -78,10 +80,7 @@ namespace GraphTests
         [Test]
         public void RemoveEdgeTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
-
-            for (int i = 0; i < 4; i++)
-                graph.AddNode(i);
+            InicjalizeGraph(4);
 
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
@@ -108,10 +107,7 @@ namespace GraphTests
         [Test]
         public void GetAllEdgeTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
-
-            for (int i = 0; i < 4; i++)
-                graph.AddNode(i);
+            InicjalizeGraph(4);
 
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
@@ -124,6 +120,14 @@ namespace GraphTests
 
             Assert.AreEqual(0, edges.Find(n => n.From.Index == 0).From.Index);
             Assert.AreEqual(1, edges.Find(n => n.From.Index == 1).From.Index);
+        }
+
+        void InicjalizeGraph(int nodeCount)
+        {
+            graph = new Graph<int, int>();
+
+            for (int i = 0; i < nodeCount; i++)
+                graph.AddNode(i);
         }
     }
 }

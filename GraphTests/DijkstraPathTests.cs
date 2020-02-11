@@ -6,15 +6,15 @@ using Graph;
 
 namespace GraphTests
 {
-    public class BijkstraPathTests
+    public class DijkstraPathTests
     {
+        // For Dijkstra pathfinding algorithm, must use weighted graph.
+        Graph<int, int> graph = new Graph<int, int>(true);
+
         [Test]
         public void ShortedPathDijkstraAlgorithmTests()
         {
-            Graph<int, int> graph = new Graph<int, int>(true);
-
-            for (int i = 0; i < 10; i++)
-                graph.AddNode(i);
+            InicjalizeGraph(10);
 
             graph.AddEdge(graph[0], graph[1], 4);
             graph.AddEdge(graph[0], graph[2], 2);
@@ -47,6 +47,12 @@ namespace GraphTests
                 weightSum += shortestPath[i].Weight;
 
             Assert.AreEqual(11, weightSum);
+        }
+
+        void InicjalizeGraph(int nodeCount)
+        {
+            for (int i = 0; i < nodeCount; i++)
+                graph.AddNode(i);
         }
     }
 }
