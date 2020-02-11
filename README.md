@@ -16,4 +16,4 @@ This is a simple implement a mathematical graph library that provides stores dat
 This project is: in progress. We add new function and may changes existing method/class.
 
 ## License
-MIT © [Sebastian Guzik](https://github.com/Guzik1).
+[MIT License](https://github.com/Guzik1/.Net_MathGraph/blob/master/LICENSE) © [Sebastian Guzik](https://github.com/Guzik1).
