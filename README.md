@@ -13,7 +13,7 @@ This is a simple implement a mathematical graph library that provides stores dat
 
 ## Setup
 Compiling bin library in /bin folder. <br />
-Copy Graph and OptymalizedPriorityQueue (.dll files) to your project. <br />
+Copy Graph and Priority Queue (.dll files) to your project. <br />
 NuGet package available soon.
 
 ## Simple code example
