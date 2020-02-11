@@ -13,7 +13,7 @@ namespace GraphTests
 
             for (int i = 0; i < 10; i++)
                 graph.AddNode(i);
-
+             
             Assert.AreEqual(10, graph.NodesCount);
         }
 
