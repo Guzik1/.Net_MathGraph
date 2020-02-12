@@ -42,7 +42,7 @@ Console.WriteLine(edge01.Data);
 graph.RemoveEdge(node0, graph[1]); // remove edge beetwen node 0 and 1
 graph.RemoveNode(graph[0]);  /* or */  graph.RemoveNode(node0);  // node 1 becomes to node 0
 ```
-For more info and examples, you must view documentation.
+For more information and examples, you must view documentation.
 
 ## Built with
 - .Net Core 3.0
