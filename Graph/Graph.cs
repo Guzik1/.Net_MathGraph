@@ -1,5 +1,4 @@
-﻿using Graph.SerializableConverter;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Graph
 {
@@ -22,6 +21,7 @@ namespace Graph
 
         List<Node<TypeOfNodeData, TypeOfEdgeData>> Nodes { get; set; } = new List<Node<TypeOfNodeData, TypeOfEdgeData>>();
 
+        #region Constructors
         /// <summary>
         /// Inicjalize weighted and directed graph, select graph directed and weighted type.
         /// </summary>
@@ -51,6 +51,7 @@ namespace Graph
             this.IsDirected = false;
             this.IsWeighted = false;
         }
+        #endregion
 
         /// <summary>
         /// Get the edge between two nodes (from, to).
@@ -65,23 +66,27 @@ namespace Graph
                 Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom = Nodes[from];
                 Node<TypeOfNodeData, TypeOfEdgeData> nodeTo = Nodes[to];
 
-                int i = nodeFrom.Neighbors.IndexOf(nodeTo);
+                int neighborId = nodeFrom.Neighbors.IndexOf(nodeTo);
 
-                if(i >= 0)
-                {
-                    Edge<TypeOfNodeData, TypeOfEdgeData> edge = new Edge<TypeOfNodeData, TypeOfEdgeData>()
-                    {
-                        From = nodeFrom,
-                        To = nodeTo,
-                        Data = nodeFrom.EdgeData[i],
-                        Weight = i < nodeFrom.Weights.Count ? nodeFrom.Weights[i] : 0
-                    };
-
-                    return edge;
-                }
+                if(IsNeighbor(neighborId))
+                    return BuildEdge(nodeFrom, nodeTo, neighborId);
 
                 return null;
             }
+        }
+
+        bool IsNeighbor(int weightToNode)
+            => weightToNode >= 0;
+
+        Edge<TypeOfNodeData, TypeOfEdgeData> BuildEdge(Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom, Node<TypeOfNodeData, TypeOfEdgeData> nodeTo, int neighborId)
+        {
+            return new Edge<TypeOfNodeData, TypeOfEdgeData>()
+            {
+                From = nodeFrom,
+                To = nodeTo,
+                Data = nodeFrom.EdgeData[neighborId],
+                Weight = neighborId < nodeFrom.Weights.Count ? nodeFrom.Weights[neighborId] : 0
+            };
         }
 
         /// <summary>
@@ -129,8 +134,13 @@ namespace Graph
 
             UpdateIndices();
 
-            foreach(Node<TypeOfNodeData, TypeOfEdgeData> node in Nodes)
-                RemoveEdge(node, nodeToRemove);
+            RemoveAllEdgeToNode(nodeToRemove);
+        }
+
+        void RemoveAllEdgeToNode(Node<TypeOfNodeData, TypeOfEdgeData> nodeToConnection)
+        {
+            foreach (Node<TypeOfNodeData, TypeOfEdgeData> node in Nodes)
+                RemoveEdge(node, nodeToConnection);
         }
 
         /// <summary>
@@ -146,7 +156,7 @@ namespace Graph
 
             if (IsWeighted)
                 from.Weights.Add(weight);
-            if (edgeData != default)
+            if (edgeData != null)
                 from.EdgeData.Add(edgeData);
 
             if (!IsDirected)
@@ -156,7 +166,7 @@ namespace Graph
                 if (IsWeighted)
                     to.Weights.Add(weight);
 
-                if (edgeData != default)
+                if (edgeData != null)
                     to.EdgeData.Add(edgeData);
             }
         }
@@ -191,12 +201,7 @@ namespace Graph
             {
                 for(int i = 0; i < from.Neighbors.Count; i++)
                 {
-                    Edge<TypeOfNodeData, TypeOfEdgeData> edge = new Edge<TypeOfNodeData, TypeOfEdgeData>()
-                    {
-                        From = from,
-                        To = from.Neighbors[i],
-                        Weight = i < from.Weights.Count ? from.Weights[i] : 0
-                    };
+                    Edge<TypeOfNodeData, TypeOfEdgeData> edge = BuildEdge(from, from.Neighbors[i], i);
 
                     edges.Add(edge);
                 }
