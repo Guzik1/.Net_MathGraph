@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph", "Graph\Graph.csproj", "{F44D5FC9-C88A-4187-98C2-42EF82E2022E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSave", "GraphSave\GraphSave.csproj", "{4EBF43BE-7279-4F22-B9F5-C1FBBFB941C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphSave", "GraphSave\GraphSave.csproj", "{4EBF43BE-7279-4F22-B9F5-C1FBBFB941C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphTests", "GraphTests\GraphTests.csproj", "{93B2AC21-79A5-4663-936D-AA296A9B8EBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphTests", "GraphTests\GraphTests.csproj", "{93B2AC21-79A5-4663-936D-AA296A9B8EBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

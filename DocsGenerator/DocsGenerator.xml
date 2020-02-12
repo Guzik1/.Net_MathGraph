@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DocsGenerator</name>
+    </assembly>
+    <members>
+        <member name="T:DocsGenerator.Class1">
+            <summary>
+            saf
+            </summary>
+        </member>
+    </members>
+</doc>
