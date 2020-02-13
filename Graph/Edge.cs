@@ -8,7 +8,7 @@
     public class Edge<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
-        /// The start node.
+        /// The begin node.
         /// </summary>
         public Node<TypeOfNodeData, TypeOfEdgeData> NodeFrom { get; set; }
 

@@ -98,6 +98,8 @@ namespace GraphTests
             graph.RemoveEdge(graph[3], graph[2]);
 
             Assert.IsNull(graph[0, 1]);
+            Assert.IsNull(graph[1, 0]);
+
             Assert.IsNull(graph[0, 2]);
             Assert.IsNull(graph[1, 3]);
             Assert.IsNull(graph[3, 2]);

@@ -3,7 +3,7 @@
 namespace Graph
 {
     /// <summary>
-    /// This class represent a mathematical graph with data in nodes and edges.
+    /// This class represent a mathematical graph with data in nodes and edges. This version can't be serialized.
     /// </summary>
     /// <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
     /// <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
@@ -59,22 +59,6 @@ namespace Graph
         /// <param name="nodeFromId">Node id where the edge begin.</param>
         /// <param name="nodeToId">Node id where the edge end.</param>
         /// <returns>Edge between node FROM and node TO.</returns>
-        /// <example>How to call?
-        /// <code>
-        /// public class Test(){
-        ///     public void Method(){
-        ///         graph<int, int> graph = new graph<int, int>
-        ///         
-        ///         Node<int, int> node = graph.AddNode(0); // index 0 as node data.
-        ///         graph.AddNode(1);                       // index 1 as node data.
-        ///         
-        ///         Edge<int, int> edge = graph[0, 1];
-        ///         /* or */
-        ///         edge = graph[node.Index, graph[1]];
-        ///     }   
-        /// }
-        /// </code>
-        /// </example>
         public Edge<TypeOfNodeData, TypeOfEdgeData> this[int nodeFromId, int nodeToId]
         {
             get
@@ -106,16 +90,13 @@ namespace Graph
         }
 
         /// <summary>
-        /// Get the node from node number.
+        /// Get the node reference from node id.
         /// </summary>
-        /// <param name="nodeNumber">Number of node.</param>
-        /// <returns>Node</returns>
+        /// <param name="nodeNumber">Id of node.</param>
+        /// <returns>Node reference</returns>
         public Node<TypeOfNodeData, TypeOfEdgeData> this[int nodeNumber]
         {
-            get
-            {
-                return Nodes[nodeNumber];
-            }
+            get => Nodes[nodeNumber];
         }
 
         /// <summary>
@@ -160,48 +141,54 @@ namespace Graph
         }
 
         /// <summary>
-        /// Add edge between two node (from, to) and/or weight and/or data in edge.
+        /// Add edge between two node (from, to) and data in edge. For weighted graph add also weight.
         /// </summary>
-        /// <param name="from">Node from edge start.</param>
-        /// <param name="to">Node to edge end.</param>
+        /// <param name="from">Node from the edge begin.</param>
+        /// <param name="to">Node to the edge end.</param>
         /// <param name="weight">Weight of edge, default 0 (use for weighted graph)</param>
         /// <param name="edgeData">The edge data, default 'default of data'.</param>
         public void AddEdge(Node<TypeOfNodeData, TypeOfEdgeData> from, Node<TypeOfNodeData, TypeOfEdgeData> to, int weight = 0, TypeOfEdgeData edgeData = default)
+        {
+            AddEdgeToOneNode(from, to, weight, edgeData);
+
+            if (!IsDirected)
+                AddEdgeToOneNode(to, from, weight, edgeData);
+        }
+
+        void AddEdgeToOneNode(Node<TypeOfNodeData, TypeOfEdgeData> from, Node<TypeOfNodeData, TypeOfEdgeData> to, int weight = 0, TypeOfEdgeData edgeData = default)
         {
             from.Neighbors.Add(to);
 
             if (IsWeighted)
                 from.Weights.Add(weight);
+
             if (edgeData != null)
                 from.EdgeData.Add(edgeData);
-
-            if (!IsDirected)
-            {
-                to.Neighbors.Add(from);
-
-                if (IsWeighted)
-                    to.Weights.Add(weight);
-
-                if (edgeData != null)
-                    to.EdgeData.Add(edgeData);
-            }
         }
 
         /// <summary>
         /// Remove a edge between node FROM and node TO.
         /// </summary>
-        /// <param name="from">Node of start edge.</param>
-        /// <param name="to">Node of end edge.</param>
-        public void RemoveEdge(Node<TypeOfNodeData, TypeOfEdgeData> from, Node<TypeOfNodeData, TypeOfEdgeData> to)
+        /// <param name="nodeFrom">Node where the edge begin.</param>
+        /// <param name="nodeTo">Node where the edge end.</param>
+        public void RemoveEdge(Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom, Node<TypeOfNodeData, TypeOfEdgeData> nodeTo)
         {
-            int index = from.Neighbors.FindIndex(n => n == to);
+            RemoveOneEdge(nodeFrom, nodeTo);
 
-            if(index >= 0)
+            if(!IsDirected)
+                RemoveOneEdge(nodeTo, nodeFrom);
+        }
+
+        void RemoveOneEdge(Node<TypeOfNodeData, TypeOfEdgeData> from, Node<TypeOfNodeData, TypeOfEdgeData> to)
+        {
+            int neighborIndex = from.Neighbors.FindIndex(n => n == to);
+
+            if (neighborIndex >= 0)
             {
-                from.Neighbors.RemoveAt(index);
+                from.Neighbors.RemoveAt(neighborIndex);
 
                 if (IsWeighted)
-                    from.Weights.RemoveAt(index);
+                    from.Weights.RemoveAt(neighborIndex);
             }
         }
 
@@ -213,17 +200,20 @@ namespace Graph
         {
             List<Edge<TypeOfNodeData, TypeOfEdgeData>> edges = new List<Edge<TypeOfNodeData, TypeOfEdgeData>>();
 
-            foreach(Node<TypeOfNodeData, TypeOfEdgeData> from in Nodes)
-            {
-                for(int i = 0; i < from.Neighbors.Count; i++)
-                {
-                    Edge<TypeOfNodeData, TypeOfEdgeData> edge = BuildEdge(from, from.Neighbors[i], i);
-
-                    edges.Add(edge);
-                }
-            }
+            foreach (Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom in Nodes)
+                AddAllNeighborEdges(edges, nodeFrom);
 
             return edges;
+        }
+
+        void AddAllNeighborEdges(List<Edge<TypeOfNodeData, TypeOfEdgeData>> edgesList, Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom)
+        {
+            for (int i = 0; i < nodeFrom.Neighbors.Count; i++)
+            {
+                Edge<TypeOfNodeData, TypeOfEdgeData> edge = BuildEdge(nodeFrom, nodeFrom.Neighbors[i], i);
+
+                edgesList.Add(edge);
+            }
         }
 
         void UpdateIndices()

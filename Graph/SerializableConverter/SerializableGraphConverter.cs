@@ -4,11 +4,17 @@ using System.Text;
 
 namespace Graph.SerializableConverter
 {
+    /// <summary>
+    /// Class to convert unserializable graph to serializable graph and vice versa.
+    /// </summary>
+    /// <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+    /// <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
     public class SerializableGraphConverter<TypeOfNodeData, TypeOfEdgeData>
     {
         Graph<TypeOfNodeData, TypeOfEdgeData> graph;
 
         SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> serializedGraph;
+
 
         public SerializableGraphConverter(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
             => this.graph = graph;

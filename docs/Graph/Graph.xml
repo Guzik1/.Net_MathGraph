@@ -13,7 +13,7 @@
         </member>
         <member name="P:Graph.Edge`2.NodeFrom">
             <summary>
-            The start node.
+            The begin node.
             </summary>
         </member>
         <member name="P:Graph.Edge`2.NodeTo">
@@ -41,7 +41,7 @@
         </member>
         <member name="T:Graph.Graph`2">
             <summary>
-            This class represent a mathematical graph with data in nodes and edges.
+            This class represent a mathematical graph with data in nodes and edges. This version can't be serialized.
             </summary>
             <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
             <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
@@ -82,13 +82,20 @@
             Inicajlizing the simple graph (unweighted and undirected graph).
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Graph.Graph`2.Item(System.Int32,System.Int32)" -->
+        <member name="P:Graph.Graph`2.Item(System.Int32,System.Int32)">
+            <summary>
+            Get the edge between two nodes (node from and node to).
+            </summary>
+            <param name="nodeFromId">Node id where the edge begin.</param>
+            <param name="nodeToId">Node id where the edge end.</param>
+            <returns>Edge between node FROM and node TO.</returns>
+        </member>
         <member name="P:Graph.Graph`2.Item(System.Int32)">
             <summary>
-            Get the node from node number.
+            Get the node reference from node id.
             </summary>
-            <param name="nodeNumber">Number of node.</param>
-            <returns>Node</returns>
+            <param name="nodeNumber">Id of node.</param>
+            <returns>Node reference</returns>
         </member>
         <member name="P:Graph.Graph`2.NodesCount">
             <summary>
@@ -111,10 +118,10 @@
         </member>
         <member name="M:Graph.Graph`2.AddEdge(Graph.Node{`0,`1},Graph.Node{`0,`1},System.Int32,`1)">
             <summary>
-            Add edge between two node (from, to) and/or weight and/or data in edge.
+            Add edge between two node (from, to) and data in edge. For weighted graph add also weight.
             </summary>
-            <param name="from">Node from edge start.</param>
-            <param name="to">Node to edge end.</param>
+            <param name="from">Node from the edge begin.</param>
+            <param name="to">Node to the edge end.</param>
             <param name="weight">Weight of edge, default 0 (use for weighted graph)</param>
             <param name="edgeData">The edge data, default 'default of data'.</param>
         </member>
@@ -122,8 +129,8 @@
             <summary>
             Remove a edge between node FROM and node TO.
             </summary>
-            <param name="from">Node of start edge.</param>
-            <param name="to">Node of end edge.</param>
+            <param name="nodeFrom">Node where the edge begin.</param>
+            <param name="nodeTo">Node where the edge end.</param>
         </member>
         <member name="M:Graph.Graph`2.GetAllEdges">
             <summary>
@@ -170,6 +177,77 @@
             </summary>
             <code>return $"Node id { Index }, data: { Data }, neighbors count: { Neighbors.Count }"</code>
             <returns>String of Node object.</returns>
+        </member>
+        <member name="T:Graph.SerializableConverter.SerializableEdge`1">
+            <summary>
+            Object repersent a edge from graph. This version can be serialized.
+            </summary>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableEdge`1.NodeFromId">
+            <summary>
+            The begin node id.
+            </summary>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableEdge`1.NodeToId">
+            <summary>
+            The end node id.
+            </summary>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableEdge`1.Data">
+            <summary>
+            Edge data.
+            </summary>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableEdge`1.Weight">
+            <summary>
+            Edge weight
+            </summary>
+        </member>
+        <member name="T:Graph.SerializableConverter.SerializableGraphDataModel`2">
+            <summary>
+            This class represent a mathematical graph with data in nodes and edges. This version can be serialized.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.IsDirected">
+            <summary>
+            Return true when graph is directed or otherwise return false.
+            </summary>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.IsWeighted">
+            <summary>
+            Return true when graph is weighted or otherwise return false.
+            </summary>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.Node">
+            <summary>
+            List of node from graph.
+            </summary>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.Edge">
+            <summary>
+            List of edge from graph.
+            </summary>
+        </member>
+        <member name="T:Graph.SerializableConverter.SerializableGraphConverter`2">
+            <summary>
+            Class to convert unserializable graph to serializable graph and vice versa.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="T:Graph.SerializableConverter.SerializableNode`1">
+            <summary>
+            Represent a Node in graph. This version can be serialized.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of Node data.</typeparam>
+        </member>
+        <member name="P:Graph.SerializableConverter.SerializableNode`1.Data">
+            <summary>
+            Data of serializable node.
+            </summary>
         </member>
     </members>
 </doc>

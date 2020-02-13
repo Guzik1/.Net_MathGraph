@@ -1,7 +1,7 @@
 #### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph').[Edge&lt;TypeOfNodeData,TypeOfEdgeData&gt;](./Graph-Edge-TypeOfNodeData_TypeOfEdgeData-.md 'Graph.Edge&lt;TypeOfNodeData,TypeOfEdgeData&gt;')
 ## Edge&lt;TypeOfNodeData,TypeOfEdgeData&gt;.NodeFrom Property
-The start node.  
+The begin node.  
 ```csharp
 public Graph.Node<TypeOfNodeData,TypeOfEdgeData> NodeFrom { get; set; }
 ```
