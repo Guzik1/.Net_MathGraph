@@ -118,8 +118,8 @@ namespace GraphTests
 
             Assert.AreEqual(8, edges.Count);
 
-            Assert.AreEqual(0, edges.Find(n => n.From.Index == 0).From.Index);
-            Assert.AreEqual(1, edges.Find(n => n.From.Index == 1).From.Index);
+            Assert.AreEqual(0, edges.Find(n => n.NodeFrom.Index == 0).NodeFrom.Index);
+            Assert.AreEqual(1, edges.Find(n => n.NodeFrom.Index == 1).NodeFrom.Index);
         }
 
         void InicjalizeGraph(int nodeCount)

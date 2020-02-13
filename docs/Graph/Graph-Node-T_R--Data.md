@@ -1,4 +1,4 @@
-#### [Graph](./A:\Visualstudioproject\GraphGit\docs.md 'A:\Visual studio project\GraphGit\docs')
+#### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph').[Node&lt;T,R&gt;](./Graph-Node-T_R-.md 'Graph.Node&lt;T,R&gt;')
 ## Node&lt;T,R&gt;.Data Property
 Data of node.  

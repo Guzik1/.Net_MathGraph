@@ -1,26 +1,26 @@
 ﻿namespace Graph
 {
     /// <summary>
-    /// Object repersent a edge from graph.
+    /// Object repersent a edge from graph, beetwen two node (node from to node to).
     /// </summary>
-    /// <typeparam name="T">Type of node data.</typeparam>
-    /// <typeparam name="R">Type of edge data.</typeparam>
-    public class Edge<T, R>
+    /// <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+    /// <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+    public class Edge<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
         /// The start node.
         /// </summary>
-        public Node<T, R> From { get; set; }
+        public Node<TypeOfNodeData, TypeOfEdgeData> NodeFrom { get; set; }
 
         /// <summary>
         /// The end node.
         /// </summary>
-        public Node<T, R> To { get; set; }
+        public Node<TypeOfNodeData, TypeOfEdgeData> NodeTo { get; set; }
 
         /// <summary>
         /// Edge data.
         /// </summary>
-        public R Data { get; set; }
+        public TypeOfEdgeData Data { get; set; }
 
         /// <summary>
         /// Edge weight
@@ -29,11 +29,13 @@
 
         /// <summary>
         /// Convert this object to string.
+        /// Converting format:
         /// </summary>
-        /// <returns>String of object</returns>
+        /// <code>return $"Edge: { NodeFrom.Data } -> { NodeTo.Data }, weight { Weight }, data: { Data.ToString() }"</code>
+        /// <returns>String of Edge object.</returns>
         public override string ToString()
         {
-            return $"Edge: { From.Data } -> { To.Data }, weight { Weight }, data: { Data.ToString() }";
+            return $"Edge: { NodeFrom.Data } -> { NodeTo.Data }, weight { Weight }, data: { Data.ToString() }";
         }
     }
 }

@@ -1,4 +1,4 @@
-#### [Graph](./A:\Visualstudioproject\GraphGit\docs.md 'A:\Visual studio project\GraphGit\docs')
+#### [Graph](./index.md 'index')
 ## Graph Namespace
 ### Classes
 - [Edge&lt;T,R&gt;](./Graph-Edge-T_R-.md 'Graph.Edge&lt;T,R&gt;')

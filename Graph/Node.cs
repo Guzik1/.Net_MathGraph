@@ -3,14 +3,14 @@
 namespace Graph
 {
     /// <summary>
-    /// Represent a Node in graph.
+    /// Represent a Node in graph, with id, data in node, list of neighbor, weights and edges data.
     /// </summary>
-    /// <typeparam name="T">Type of Node data.</typeparam>
-    /// <typeparam name="R">Type of Edge data.</typeparam>
-    public class Node<T, R>
+    /// <typeparam name="TypeOfNodeData">Type of Node data.</typeparam>
+    /// <typeparam name="TypeOfEdgeData">Type of Edge data.</typeparam>
+    public class Node<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
-        /// Index of node (use inside).
+        /// Index of node (use inside, may change when removing nodes).
         /// </summary>
         public int Index { get; set; }
         //internal int Index { get; set; }
@@ -18,26 +18,28 @@ namespace Graph
         /// <summary>
         /// Data of node.
         /// </summary>
-        public T Data { get; set; }
+        public TypeOfNodeData Data { get; set; }
 
         /// <summary>
         /// List of neighboring nodes (nodes connected by the edge).
         /// </summary>
-        public List<Node<T, R>> Neighbors { get; set; } = new List<Node<T, R>>();
+        public List<Node<TypeOfNodeData, TypeOfEdgeData>> Neighbors { get; set; } = new List<Node<TypeOfNodeData, TypeOfEdgeData>>();
 
         /// <summary>
-        /// Weight of edge, from this to neighboring nodes.
+        /// Weight of edge, from this node to neighboring nodes.
         /// </summary>
         public List<int> Weights { get; set; } = new List<int>();
 
         /// <summary>
-        /// Data in edge to neighboring nodes 
+        /// Data edge from this node to neighboring nodes.
         /// </summary>
-        public List<R> EdgeData { get; set; } = new List<R>();
+        public List<TypeOfEdgeData> EdgeData { get; set; } = new List<TypeOfEdgeData>();
 
         /// <summary>
-        /// Method to converting this object to string.
+        /// Convert this object to string.
+        /// Converting format:
         /// </summary>
+        /// <code>return $"Node id { Index }, data: { Data }, neighbors count: { Neighbors.Count }"</code>
         /// <returns>String of Node object.</returns>
         public override string ToString()
         {

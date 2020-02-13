@@ -35,12 +35,12 @@ namespace GraphTests
 
             Assert.AreEqual(4, shortestPath.Count);
 
-            Assert.AreEqual(7, shortestPath[0].From.Index);
-            Assert.AreEqual(5, shortestPath[0].To.Index);
-            Assert.AreEqual(4, shortestPath[1].To.Index);
-            Assert.AreEqual(2, shortestPath[2].To.Index);
-            Assert.AreEqual(0, shortestPath[3].To.Index);
-            Assert.AreEqual(2, shortestPath[3].From.Index);
+            Assert.AreEqual(7, shortestPath[0].NodeFrom.Index);
+            Assert.AreEqual(5, shortestPath[0].NodeTo.Index);
+            Assert.AreEqual(4, shortestPath[1].NodeTo.Index);
+            Assert.AreEqual(2, shortestPath[2].NodeTo.Index);
+            Assert.AreEqual(0, shortestPath[3].NodeTo.Index);
+            Assert.AreEqual(2, shortestPath[3].NodeFrom.Index);
 
             int weightSum = 0;
             for (int i = 0; i < shortestPath.Count; i++)

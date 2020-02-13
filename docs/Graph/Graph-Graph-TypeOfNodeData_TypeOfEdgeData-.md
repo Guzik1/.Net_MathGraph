@@ -1,4 +1,4 @@
-#### [Graph](./A:\Visualstudioproject\GraphGit\docs.md 'A:\Visual studio project\GraphGit\docs')
+#### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph')
 ## Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt; Class
 This class represent a mathematical graph with data in nodes and edges.  

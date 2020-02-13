@@ -1,4 +1,4 @@
-#### [Graph](./A:\Visualstudioproject\GraphGit\docs.md 'A:\Visual studio project\GraphGit\docs')
+#### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph').[Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData-.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;')
 ## Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.RemoveNode(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;) Method
 Remove node from the graph.  

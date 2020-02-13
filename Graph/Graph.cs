@@ -10,12 +10,12 @@ namespace Graph
     public partial class Graph<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
-        /// Return true when graph is directed or otherwise false
+        /// Return true when graph is directed or otherwise return false.
         /// </summary>
         public bool IsDirected { get; } = false;
 
         /// <summary>
-        /// Return true when graph is weighted or otherwise false
+        /// Return true when graph is weighted or otherwise return false.
         /// </summary>
         public bool IsWeighted { get; } = false;
 
@@ -23,10 +23,10 @@ namespace Graph
 
         #region Constructors
         /// <summary>
-        /// Inicjalize weighted and directed graph, select graph directed and weighted type.
+        /// Inicajlizing the graph, select whether it is a weighted or a directed chart.
         /// </summary>
-        /// <param name="isDirected">Set true to direct a graph, for undirected set false.</param>
-        /// <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
+        /// <param name="isDirected">Set true for initialize directed graph, or false for inicjalize undirected graph.</param>
+        /// <param name="isWeighted">Set true for initialize weighted graph, or false for inicjalize unweighted graph.</param>
         public Graph(bool isWeighted = false, bool isDirected = false)
         {
             this.IsDirected = isDirected;
@@ -34,9 +34,9 @@ namespace Graph
         }
 
         /// <summary>
-        /// Inicjalize weighted graph, select graph weighted type. (Set isDirected to false)
+        /// Inicajlizing the graph, select whether it is a weighted graph.
         /// </summary>
-        /// <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
+        /// <param name="isWeighted">Set true for initialize weighted graph, or false for inicjalize unweighted graph.</param>
         public Graph(bool isWeighted = false)
         {
             this.IsDirected = false;
@@ -44,7 +44,7 @@ namespace Graph
         }
 
         /// <summary>
-        /// Inicjalize standard graph, unweighted and undirected.
+        /// Inicajlizing the simple graph (unweighted and undirected graph).
         /// </summary>
         public Graph()
         {
@@ -54,17 +54,33 @@ namespace Graph
         #endregion
 
         /// <summary>
-        /// Get the edge between two nodes (from, to).
+        /// Get the edge between two nodes (node from and node to).
         /// </summary>
-        /// <param name="from">Edge FROM the node.</param>
-        /// <param name="to">Edge TO the node.</param>
+        /// <param name="nodeFromId">Node id where the edge begin.</param>
+        /// <param name="nodeToId">Node id where the edge end.</param>
         /// <returns>Edge between node FROM and node TO.</returns>
-        public Edge<TypeOfNodeData, TypeOfEdgeData> this[int from, int to]
+        /// <example>How to call?
+        /// <code>
+        /// public class Test(){
+        ///     public void Method(){
+        ///         graph<int, int> graph = new graph<int, int>
+        ///         
+        ///         Node<int, int> node = graph.AddNode(0); // index 0 as node data.
+        ///         graph.AddNode(1);                       // index 1 as node data.
+        ///         
+        ///         Edge<int, int> edge = graph[0, 1];
+        ///         /* or */
+        ///         edge = graph[node.Index, graph[1]];
+        ///     }   
+        /// }
+        /// </code>
+        /// </example>
+        public Edge<TypeOfNodeData, TypeOfEdgeData> this[int nodeFromId, int nodeToId]
         {
             get
             {
-                Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom = Nodes[from];
-                Node<TypeOfNodeData, TypeOfEdgeData> nodeTo = Nodes[to];
+                Node<TypeOfNodeData, TypeOfEdgeData> nodeFrom = Nodes[nodeFromId];
+                Node<TypeOfNodeData, TypeOfEdgeData> nodeTo = Nodes[nodeToId];
 
                 int neighborId = nodeFrom.Neighbors.IndexOf(nodeTo);
 
@@ -82,8 +98,8 @@ namespace Graph
         {
             return new Edge<TypeOfNodeData, TypeOfEdgeData>()
             {
-                From = nodeFrom,
-                To = nodeTo,
+                NodeFrom = nodeFrom,
+                NodeTo = nodeTo,
                 Data = nodeFrom.EdgeData[neighborId],
                 Weight = neighborId < nodeFrom.Weights.Count ? nodeFrom.Weights[neighborId] : 0
             };

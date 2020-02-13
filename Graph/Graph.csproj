@@ -2,11 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.0.2</Version>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Guzik1/.Net_MathGraph</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Guzik1/.Net_MathGraph</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>MIT</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>false</Optimize>
-    <DocumentationFile>A:\Visual studio project\GraphGit\docs\Graph.xml</DocumentationFile>
+    <DocumentationFile>A:\Visual studio project\GraphGit\docs\Graph\Graph.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
