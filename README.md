@@ -42,7 +42,7 @@ Console.WriteLine(edge01.Data); /* or */  Console.WriteLine(graph[0, 1].Data);
 graph.RemoveEdge(node0, graph[1]); // remove edge beetwen node 0 and 1
 graph.RemoveNode(graph[0]);  /* or */  graph.RemoveNode(node0);  // node 1 becomes to node 0
 ```
-For more information, you must view [documentation](https://github.com/Guzik1/.Net_MathGraph/blob/master/docs/Graph.md). <br />
+For more information, you must view [documentation](https://github.com/Guzik1/.Net_MathGraph/blob/master/docs/Graph/Graph.md). <br />
 Examples available here (TODO! make examples).
 
 ## Built with
