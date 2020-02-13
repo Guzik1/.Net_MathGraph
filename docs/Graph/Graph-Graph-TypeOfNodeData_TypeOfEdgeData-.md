@@ -23,7 +23,6 @@ Type of data in edges.
 - [IsDirected](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--IsDirected.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.IsDirected')
 - [IsWeighted](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--IsWeighted.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.IsWeighted')
 - [this[int]](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--this-int-.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.this[int]')
-- [this[int, int]](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--this-int_int-.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.this[int, int]')
 - [NodesCount](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--NodesCount.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.NodesCount')
 ### Methods
 - [AddEdge(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;, Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;, int, TypeOfEdgeData)](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--AddEdge(Graph-Node-TypeOfNodeData_TypeOfEdgeData-_Graph-Node-TypeOfNodeData_TypeOfEdgeData-_int_TypeOfEdgeData).md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.AddEdge(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;, Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;, int, TypeOfEdgeData)')

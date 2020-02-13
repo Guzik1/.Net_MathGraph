@@ -6,17 +6,17 @@
     <members>
         <member name="T:Graph.Edge`2">
             <summary>
-            Object repersent a edge from graph.
+            Object repersent a edge from graph, beetwen two node (node from to node to).
             </summary>
-            <typeparam name="T">Type of node data.</typeparam>
-            <typeparam name="R">Type of edge data.</typeparam>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
         </member>
-        <member name="P:Graph.Edge`2.From">
+        <member name="P:Graph.Edge`2.NodeFrom">
             <summary>
             The start node.
             </summary>
         </member>
-        <member name="P:Graph.Edge`2.To">
+        <member name="P:Graph.Edge`2.NodeTo">
             <summary>
             The end node.
             </summary>
@@ -34,8 +34,10 @@
         <member name="M:Graph.Edge`2.ToString">
             <summary>
             Convert this object to string.
+            Converting format:
             </summary>
-            <returns>String of object</returns>
+            <code>return $"Edge: { NodeFrom.Data } -> { NodeTo.Data }, weight { Weight }, data: { Data.ToString() }"</code>
+            <returns>String of Edge object.</returns>
         </member>
         <member name="T:Graph.Graph`2">
             <summary>
@@ -54,40 +56,33 @@
         </member>
         <member name="P:Graph.Graph`2.IsDirected">
             <summary>
-            Return true when graph is directed or otherwise false
+            Return true when graph is directed or otherwise return false.
             </summary>
         </member>
         <member name="P:Graph.Graph`2.IsWeighted">
             <summary>
-            Return true when graph is weighted or otherwise false
+            Return true when graph is weighted or otherwise return false.
             </summary>
         </member>
         <member name="M:Graph.Graph`2.#ctor(System.Boolean,System.Boolean)">
             <summary>
-            Inicjalize weighted and directed graph, select graph directed and weighted type.
+            Inicajlizing the graph, select whether it is a weighted or a directed chart.
             </summary>
-            <param name="isDirected">Set true to direct a graph, for undirected set false.</param>
-            <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
+            <param name="isDirected">Set true for initialize directed graph, or false for inicjalize undirected graph.</param>
+            <param name="isWeighted">Set true for initialize weighted graph, or false for inicjalize unweighted graph.</param>
         </member>
         <member name="M:Graph.Graph`2.#ctor(System.Boolean)">
             <summary>
-            Inicjalize weighted graph, select graph weighted type. (Set isDirected to false)
+            Inicajlizing the graph, select whether it is a weighted graph.
             </summary>
-            <param name="isWeighted">Set true to weighted a edge, for unwegihted set false.</param>
+            <param name="isWeighted">Set true for initialize weighted graph, or false for inicjalize unweighted graph.</param>
         </member>
         <member name="M:Graph.Graph`2.#ctor">
             <summary>
-            Inicjalize standard graph, unweighted and undirected.
+            Inicajlizing the simple graph (unweighted and undirected graph).
             </summary>
         </member>
-        <member name="P:Graph.Graph`2.Item(System.Int32,System.Int32)">
-            <summary>
-            Get the edge between two nodes (from, to).
-            </summary>
-            <param name="from">Edge FROM the node.</param>
-            <param name="to">Edge TO the node.</param>
-            <returns>Edge between node FROM and node TO.</returns>
-        </member>
+        <!-- Badly formed XML comment ignored for member "P:Graph.Graph`2.Item(System.Int32,System.Int32)" -->
         <member name="P:Graph.Graph`2.Item(System.Int32)">
             <summary>
             Get the node from node number.
@@ -138,14 +133,14 @@
         </member>
         <member name="T:Graph.Node`2">
             <summary>
-            Represent a Node in graph.
+            Represent a Node in graph, with id, data in node, list of neighbor, weights and edges data.
             </summary>
-            <typeparam name="T">Type of Node data.</typeparam>
-            <typeparam name="R">Type of Edge data.</typeparam>
+            <typeparam name="TypeOfNodeData">Type of Node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of Edge data.</typeparam>
         </member>
         <member name="P:Graph.Node`2.Index">
             <summary>
-            Index of node (use inside).
+            Index of node (use inside, may change when removing nodes).
             </summary>
         </member>
         <member name="P:Graph.Node`2.Data">
@@ -160,18 +155,20 @@
         </member>
         <member name="P:Graph.Node`2.Weights">
             <summary>
-            Weight of edge, from this to neighboring nodes.
+            Weight of edge, from this node to neighboring nodes.
             </summary>
         </member>
         <member name="P:Graph.Node`2.EdgeData">
             <summary>
-            Data in edge to neighboring nodes 
+            Data edge from this node to neighboring nodes.
             </summary>
         </member>
         <member name="M:Graph.Node`2.ToString">
             <summary>
-            Method to converting this object to string.
+            Convert this object to string.
+            Converting format:
             </summary>
+            <code>return $"Node id { Index }, data: { Data }, neighbors count: { Neighbors.Count }"</code>
             <returns>String of Node object.</returns>
         </member>
     </members>

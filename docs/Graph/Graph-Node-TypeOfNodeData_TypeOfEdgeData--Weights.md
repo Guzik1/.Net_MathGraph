@@ -1,7 +1,7 @@
 #### [Graph](./index.md 'index')
-### [Graph](./Graph.md 'Graph').[Node&lt;T,R&gt;](./Graph-Node-T_R-.md 'Graph.Node&lt;T,R&gt;')
-## Node&lt;T,R&gt;.Weights Property
-Weight of edge, from this to neighboring nodes.  
+### [Graph](./Graph.md 'Graph').[Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;](./Graph-Node-TypeOfNodeData_TypeOfEdgeData-.md 'Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;')
+## Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;.Weights Property
+Weight of edge, from this node to neighboring nodes.  
 ```csharp
 public System.Collections.Generic.List<int> Weights { get; set; }
 ```
