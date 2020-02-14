@@ -8,30 +8,30 @@ using Graph.SerializableConverter;
 
 namespace GraphSave
 {
-    public class SaveToFile<TypeOfNodeData, TypeOfEdgeData> : ISavable<TypeOfNodeData, TypeOfEdgeData>
+    public class BinarySaveToFile<TypeOfNodeData, TypeOfEdgeData> : ISavable<TypeOfNodeData, TypeOfEdgeData>
     {
         string path;
 
-        public SaveToFile(string path) =>
+        public BinarySaveToFile(string path) =>
             this.path = path;
 
         public void ChangeDirectory(string path) =>
             this.path = path;
 
-        public SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> Load()
+        public SerializableGraph<TypeOfNodeData, TypeOfEdgeData> Load()
         {
             IFormatter formatter = new BinaryFormatter();
             if (File.Exists(path))
             {
                 Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
-                return (SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData>) formatter.Deserialize(stream);
+                return (SerializableGraph<TypeOfNodeData, TypeOfEdgeData>) formatter.Deserialize(stream);
             }
 
             throw new IOException("File doesn't exist in path: " + path);
         }
 
-        public void Save(SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> save)
+        public void Save(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> save)
         {
             IFormatter formatter = new BinaryFormatter();
             Directory.CreateDirectory(Path.GetDirectoryName(path));

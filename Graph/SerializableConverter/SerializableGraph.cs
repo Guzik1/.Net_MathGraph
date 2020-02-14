@@ -10,7 +10,7 @@ namespace Graph.SerializableConverter
     /// <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
     /// <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
     [System.Serializable]
-    public class SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData>
+    public class SerializableGraph<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
         /// Return true when graph is directed or otherwise return false.

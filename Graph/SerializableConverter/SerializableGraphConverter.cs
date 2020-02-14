@@ -13,18 +13,29 @@ namespace Graph.SerializableConverter
     {
         Graph<TypeOfNodeData, TypeOfEdgeData> graph;
 
-        SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> serializedGraph;
+        SerializableGraph<TypeOfNodeData, TypeOfEdgeData> serializedGraph;
 
-
-        public SerializableGraphConverter(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
+        /// <summary>
+        /// Use this constructor to set a graph reference to convert on serializable graph.
+        /// </summary>
+        /// <param name="graph">Graph reference.</param>
+        public SerializableGraphConverter( Graph<TypeOfNodeData, TypeOfEdgeData> graph)
             => this.graph = graph;
 
-        public SerializableGraphConverter(SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> serializedGraph)
+        /// <summary>
+        /// Use this constructor to set a serializable graph reference to convert on graph.
+        /// </summary>
+        /// <param name="serializedGraph">Serializable graph reference.</param>
+        public SerializableGraphConverter(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> serializedGraph)
             => this.serializedGraph = serializedGraph;
 
-        public SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData> GetSerializableGraph()
+        /// <summary>
+        /// Convert graph to serializable graph.
+        /// </summary>
+        /// <returns>Serializable graph data model.</returns>
+        public SerializableGraph<TypeOfNodeData, TypeOfEdgeData> GetSerializableGraph()
         {
-            serializedGraph = new SerializableGraphDataModel<TypeOfNodeData, TypeOfEdgeData>
+            serializedGraph = new SerializableGraph<TypeOfNodeData, TypeOfEdgeData>
             {
                 IsDirected = graph.IsDirected,
                 IsWeighted = graph.IsWeighted,
@@ -36,11 +47,17 @@ namespace Graph.SerializableConverter
             return serializedGraph;
         }
 
-        public Graph<TypeOfNodeData, TypeOfEdgeData> SetGraphFromSerializableGraph()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Graph<TypeOfNodeData, TypeOfEdgeData> SetGraphFromSerializableGraph(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> serializedGraph)
         {
             graph = new Graph<TypeOfNodeData, TypeOfEdgeData>(serializedGraph.IsWeighted, serializedGraph.IsDirected);
 
             RewriteSerializableNodeToNode();
+
+            //TODO Edge deserializing problem!
 
             // Edge
             SerializableEdge<TypeOfEdgeData> edge;
@@ -82,7 +99,7 @@ namespace Graph.SerializableConverter
         {
             List<SerializableEdge<TypeOfEdgeData>> edges = new List<SerializableEdge<TypeOfEdgeData>>();
 
-            Node<TypeOfNodeData, TypeOfEdgeData> node = new Node<TypeOfNodeData, TypeOfEdgeData>();
+            Node<TypeOfNodeData, TypeOfEdgeData> node;
             for (int i = 0; i < graph.NodesCount; i++)
             {
                 node = graph[i];
@@ -98,8 +115,8 @@ namespace Graph.SerializableConverter
         {
             List<SerializableEdge<TypeOfEdgeData>> edges = new List<SerializableEdge<TypeOfEdgeData>>();
 
-            Node<TypeOfNodeData, TypeOfEdgeData> node = new Node<TypeOfNodeData, TypeOfEdgeData>();
-            SerializableEdge<TypeOfEdgeData> edge = new SerializableEdge<TypeOfEdgeData>();
+            Node<TypeOfNodeData, TypeOfEdgeData> node;
+            SerializableEdge<TypeOfEdgeData> edge;
             for (int i = 0; i < graph.NodesCount; i++)
             {
                 node = graph[i];
@@ -108,7 +125,7 @@ namespace Graph.SerializableConverter
                 {
                     edge = SerializeEdge(node, j);
 
-                    int index = edges.FindIndex(n => n.NodeToId == edge.NodeFromId);
+                    int index = edges.FindIndex(n => n.NodeToId == edge.NodeFromId && n.NodeFromId == edge.NodeToId);   // <---------------------
 
                     if(index == -1)
                         edges.Add(edge);
@@ -132,7 +149,7 @@ namespace Graph.SerializableConverter
             {
                 NodeFromId = node.Index,
                 NodeToId = node.Neighbors[index].Index,
-                Weight = node.Weights[index],
+                Weight = node.Weights.Count > 0 ? node.Weights[index] : 0,
                 Data = node.EdgeData[index]
             };
         }
