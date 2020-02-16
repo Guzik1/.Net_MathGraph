@@ -8,6 +8,17 @@ namespace GraphTests
     {
         Graph<int, int> graph;
 
+        int nodeCountToInicjalize = 10;
+
+        [SetUp]
+        public void InicjalizeConverterTests()
+        {
+            graph = new Graph<int, int>();
+
+            for (int i = 0; i < nodeCountToInicjalize; i++)
+                graph.AddNode(i);
+        }
+
         [Test]
         public void CreateSimpleGraphTest()
         {
@@ -18,16 +29,12 @@ namespace GraphTests
         [Test]
         public void AddNodeTest()
         {
-            InicjalizeGraph(10);
-
             Assert.AreEqual(10, graph.NodesCount);
         }
 
         [Test]
         public void RemoveNodeTest()
         {
-            InicjalizeGraph(10);
-
             graph.RemoveNode(graph[1]);
             graph.RemoveNode(graph[2]);
 
@@ -39,8 +46,6 @@ namespace GraphTests
         [Test]
         public void AddEdgeTest()
         {
-            InicjalizeGraph(10);
-
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
             graph.AddEdge(graph[1], graph[3]);
@@ -80,8 +85,6 @@ namespace GraphTests
         [Test]
         public void RemoveEdgeTest()
         {
-            InicjalizeGraph(4);
-
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
             graph.AddEdge(graph[1], graph[3]);
@@ -109,8 +112,6 @@ namespace GraphTests
         [Test]
         public void GetAllEdgeTest()
         {
-            InicjalizeGraph(4);
-
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
             graph.AddEdge(graph[1], graph[3]);
@@ -122,14 +123,6 @@ namespace GraphTests
 
             Assert.AreEqual(0, edges.Find(n => n.NodeFrom.Index == 0).NodeFrom.Index);
             Assert.AreEqual(1, edges.Find(n => n.NodeFrom.Index == 1).NodeFrom.Index);
-        }
-
-        void InicjalizeGraph(int nodeCount)
-        {
-            graph = new Graph<int, int>();
-
-            for (int i = 0; i < nodeCount; i++)
-                graph.AddNode(i);
         }
     }
 }

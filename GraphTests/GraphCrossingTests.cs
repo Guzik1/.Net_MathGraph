@@ -8,12 +8,22 @@ namespace GraphTests
 {
     public class GraphCrossingTests
     {
+        Graph<int, int> graph;
+
+        int nodeCountToInicjalize = 2;
+
+        [SetUp]
+        public void InicjalizeConverterTests()
+        {
+            graph = new Graph<int, int>();
+
+            for (int i = 0; i < nodeCountToInicjalize; i++)
+                graph.AddNode(i);
+        }
+
         [Test]
         public void AddWeightedEdgeToUnweightedGraphTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
-            InicjalizeGraph(graph, 2);
-
             graph.AddEdge(graph[0], graph[1], 4);
 
             Assert.IsNotNull(graph[0, 1]);
@@ -24,19 +34,10 @@ namespace GraphTests
         [Test]
         public void AddDirectedEdgeToUndirectedGraphTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
-            InicjalizeGraph(graph, 2);
-
             graph.AddEdge(graph[0], graph[1]);
 
             Assert.IsNotNull(graph[0, 1]);
             Assert.IsNotNull(graph[1, 0]);
-        }
-
-        void InicjalizeGraph(Graph<int, int> graph, int nodeCount)
-        {
-            for (int i = 0; i < nodeCount; i++)
-                graph.AddNode(i);
         }
     }
 }

@@ -10,22 +10,65 @@ namespace GraphTests
     [TestFixture]
     public class GraphToSerializableGraphConverterTests
     {
-        //TODO Add tests!
+        Graph<int, int> graph;
 
-        [Test]
-        public void GraphSerializeTest()
+        int nodeCountToInicjalize = 5;
+
+        [SetUp]
+        public void InicjalizeConverterTests()
         {
+            graph = new Graph<int, int>();
 
+            for (int i = 0; i < nodeCountToInicjalize; i++)
+                graph.AddNode(i);
         }
 
         [Test]
-        public void GraphConverterTest()
+        public void GraphSerializebleConverterNodesTest()
         {
-            Graph<int, int> graph = new Graph<int, int>();
+            SerializableGraphConverter<int, int> converter = new SerializableGraphConverter<int, int>(graph);
+            SerializableGraph<int, int> sGraph = converter.GetSerializableGraph();
+
+            Assert.AreEqual(5, sGraph.Node.Count);
+        }
+
+        [Test]
+        public void GraphSerializebleConverterEdgeTest()
+        {
+            graph.AddEdge(graph[0], graph[1]);
+            graph.AddEdge(graph[0], graph[2]);
+            graph.AddEdge(graph[0], graph[3]);
+
+            SerializableGraphConverter<int, int> converter = new SerializableGraphConverter<int, int>(graph);
+            SerializableGraph<int, int> sGraph = converter.GetSerializableGraph();
+
+            Assert.AreNotEqual(6, sGraph.Edge.Count);
+            Assert.AreEqual(3, sGraph.Edge.Count);
+        }
+
+        [Test]
+        public void GraphSerializebleConverterDirectedEdgeAndNodeTest()
+        {
+            graph = new Graph<int, int>(false, true);
 
             for (int i = 0; i < 5; i++)
                 graph.AddNode(i);
 
+            graph.AddEdge(graph[0], graph[1]);
+            graph.AddEdge(graph[0], graph[2]);
+            graph.AddEdge(graph[0], graph[3]);
+            graph.AddEdge(graph[1], graph[2]);
+            graph.AddEdge(graph[3], graph[1]);
+
+            SerializableGraphConverter<int, int> converter = new SerializableGraphConverter<int, int>(graph);
+            SerializableGraph<int, int> sGraph = converter.GetSerializableGraph();
+
+            Assert.AreEqual(5, sGraph.Edge.Count);
+        }
+
+        [Test]
+        public void GraphConverterSerializeAndDeserializeTest()
+        {
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
             graph.AddEdge(graph[0], graph[3]);
@@ -37,21 +80,18 @@ namespace GraphTests
             Assert.IsNotNull(graph[1, 3]);
 
             SerializableGraphConverter<int, int> sConverter = new SerializableGraphConverter<int, int>(graph);
-
             SerializableGraph<int, int> sGraph = sConverter.GetSerializableGraph();
-
-            GraphSave.XmlSaveToFile<int, int> file = new GraphSave.XmlSaveToFile<int, int>(@"A:\test.xml");
-            file.Save(sGraph);
 
             graph.RemoveEdge(graph[2], graph[3]);
             graph.RemoveEdge(graph[1], graph[3]);
             graph.RemoveNode(graph[3]);
 
+            Assert.AreEqual(4, graph.NodesCount);
+
             graph = sConverter.SetGraphFromSerializableGraph(sGraph);
 
             Assert.AreEqual(5, graph.NodesCount);
 
-            // Nodes serialize OK!
             Assert.AreEqual(10, graph.GetAllEdges().Count);
             Assert.IsNotNull(graph[2, 3]);
             Assert.IsNotNull(graph[1, 3]);

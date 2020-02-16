@@ -19,6 +19,7 @@ namespace Graph
         /// </summary>
         public bool IsWeighted { get; } = false;
 
+        // For optymalization, may change to array.
         List<Node<TypeOfNodeData, TypeOfEdgeData>> Nodes { get; set; } = new List<Node<TypeOfNodeData, TypeOfEdgeData>>();
 
         #region Constructors
@@ -116,7 +117,7 @@ namespace Graph
 
             Nodes.Add(node);
 
-            UpdateIndices();
+            UpdateIndexes();
 
             return node;
         }
@@ -129,7 +130,7 @@ namespace Graph
         {
             Nodes.Remove(nodeToRemove);
 
-            UpdateIndices();
+            UpdateIndexes();
 
             RemoveAllEdgeToNode(nodeToRemove);
         }
@@ -216,7 +217,7 @@ namespace Graph
             }
         }
 
-        void UpdateIndices()
+        void UpdateIndexes()
         {
             int i = 0;
             Nodes.ForEach(n => n.Index = i++);

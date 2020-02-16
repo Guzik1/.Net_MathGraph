@@ -204,29 +204,29 @@
             Edge weight
             </summary>
         </member>
-        <member name="T:Graph.SerializableConverter.SerializableGraphDataModel`2">
+        <member name="T:Graph.SerializableConverter.SerializableGraph`2">
             <summary>
             This class represent a mathematical graph with data in nodes and edges. This version can be serialized.
             </summary>
             <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
             <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
         </member>
-        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.IsDirected">
+        <member name="P:Graph.SerializableConverter.SerializableGraph`2.IsDirected">
             <summary>
             Return true when graph is directed or otherwise return false.
             </summary>
         </member>
-        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.IsWeighted">
+        <member name="P:Graph.SerializableConverter.SerializableGraph`2.IsWeighted">
             <summary>
             Return true when graph is weighted or otherwise return false.
             </summary>
         </member>
-        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.Node">
+        <member name="P:Graph.SerializableConverter.SerializableGraph`2.Node">
             <summary>
             List of node from graph.
             </summary>
         </member>
-        <member name="P:Graph.SerializableConverter.SerializableGraphDataModel`2.Edge">
+        <member name="P:Graph.SerializableConverter.SerializableGraph`2.Edge">
             <summary>
             List of edge from graph.
             </summary>
@@ -237,6 +237,30 @@
             </summary>
             <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
             <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.#ctor(Graph.Graph{`0,`1})">
+            <summary>
+            Use this constructor to set a graph reference to convert on serializable graph.
+            </summary>
+            <param name="graph">Graph reference.</param>
+        </member>
+        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.#ctor(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+            <summary>
+            Use this constructor to set a serializable graph reference to convert on graph.
+            </summary>
+            <param name="serializedGraph">Serializable graph reference.</param>
+        </member>
+        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.GetSerializableGraph">
+            <summary>
+            Convert graph to serializable graph.
+            </summary>
+            <returns>Serializable graph data model.</returns>
+        </member>
+        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.SetGraphFromSerializableGraph(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Graph.SerializableConverter.SerializableNode`1">
             <summary>

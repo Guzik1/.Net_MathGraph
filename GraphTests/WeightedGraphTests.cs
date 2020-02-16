@@ -10,6 +10,17 @@ namespace GraphTests
     {
         Graph<int, int> graph;
 
+        int nodeCountToInicjalize = 4;
+
+        [SetUp]
+        public void InicjalizeConverterTests()
+        {
+            graph = new Graph<int, int>();
+
+            for (int i = 0; i < nodeCountToInicjalize; i++)
+                graph.AddNode(i);
+        }
+
         [Test]
         public void CreateWeightedGraphTest()
         {
@@ -20,8 +31,6 @@ namespace GraphTests
         [Test]
         public void AddEdgeTest()
         {
-            InicjalizeGraph(4);
-
             graph.AddEdge(graph[0], graph[1], 4);
             graph.AddEdge(graph[0], graph[2], 2);
             graph.AddEdge(graph[1], graph[3], 1);
@@ -38,8 +47,6 @@ namespace GraphTests
         [Test]
         public void RemoveEdgeTest()
         {
-            InicjalizeGraph(3);
-
             graph.AddEdge(graph[0], graph[1], 4);
             graph.AddEdge(graph[0], graph[2], 2);
 
@@ -54,14 +61,6 @@ namespace GraphTests
 
             Assert.IsNull(graph[0, 1]);
             Assert.IsNull(graph[0, 2]);
-        }
-
-        void InicjalizeGraph(int nodeCount)
-        {
-            graph = new Graph<int, int>(true);
-
-            for (int i = 0; i < nodeCount; i++)
-                graph.AddNode(i);
         }
     }
 }
