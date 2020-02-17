@@ -9,12 +9,13 @@ namespace Graph
         /// <summary>
         /// Get traversal with depth-first search algorithm.
         /// </summary>
+        /// <param name="fromNode">Node from algorithm start.</param>
         /// <returns>List in order of traversal.</returns>
-        public List<Node<TypeOfNodeData, TypeOfEdgeData>> GetDepthFirstSearch()
+        public List<Node<TypeOfNodeData, TypeOfEdgeData>> GetDepthFirstSearch(Node<TypeOfNodeData, TypeOfEdgeData> fromNode)
         {
             DepthFirstSearh<TypeOfNodeData, TypeOfEdgeData> algorithm = new DepthFirstSearh<TypeOfNodeData, TypeOfEdgeData>(this);
 
-            return algorithm.DepthFirstSearhAlgorithm();
+            return algorithm.DepthFirstSearhAlgorithm(fromNode);
         }
     }
 
@@ -22,17 +23,17 @@ namespace Graph
     {
         Graph<TypeOfNodeData, TypeOfEdgeData> graph;
 
-        internal DepthFirstSearh(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
-            => this.graph = graph;
-
         bool[] isVisited;
         List<Node<TypeOfNodeData, TypeOfEdgeData>> resault = new List<Node<TypeOfNodeData, TypeOfEdgeData>>();
 
-        internal List<Node<TypeOfNodeData, TypeOfEdgeData>> DepthFirstSearhAlgorithm()
+        internal DepthFirstSearh(Graph<TypeOfNodeData, TypeOfEdgeData> graph)
+            => this.graph = graph;
+
+        internal List<Node<TypeOfNodeData, TypeOfEdgeData>> DepthFirstSearhAlgorithm(Node<TypeOfNodeData, TypeOfEdgeData> node)
         {
             Inicjalize();
 
-            DepthFirstSearch(graph[0]);
+            DepthFirstSearch(node);
 
             return resault;
         }
@@ -47,7 +48,12 @@ namespace Graph
             resault.Add(node);
             isVisited[node.Index] = true;
 
-            foreach(Node<TypeOfNodeData, TypeOfEdgeData> neighborNode in node.Neighbors)
+            VisitNeighborNode(node);
+        }
+
+        void VisitNeighborNode(Node<TypeOfNodeData, TypeOfEdgeData> node)
+        {
+            foreach (Node<TypeOfNodeData, TypeOfEdgeData> neighborNode in node.Neighbors)
             {
                 if (!isVisited[neighborNode.Index])
                     DepthFirstSearch(neighborNode);
