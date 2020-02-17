@@ -4,47 +4,18 @@
         <name>Graph</name>
     </assembly>
     <members>
-        <member name="T:Graph.Edge`2">
-            <summary>
-            Object repersent a edge from graph, beetwen two node (node from to node to).
-            </summary>
-            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
-            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
-        </member>
-        <member name="P:Graph.Edge`2.NodeFrom">
-            <summary>
-            The begin node.
-            </summary>
-        </member>
-        <member name="P:Graph.Edge`2.NodeTo">
-            <summary>
-            The end node.
-            </summary>
-        </member>
-        <member name="P:Graph.Edge`2.Data">
-            <summary>
-            Edge data.
-            </summary>
-        </member>
-        <member name="P:Graph.Edge`2.Weight">
-            <summary>
-            Edge weight
-            </summary>
-        </member>
-        <member name="M:Graph.Edge`2.ToString">
-            <summary>
-            Convert this object to string.
-            Converting format:
-            </summary>
-            <code>return $"Edge: { NodeFrom.Data } -> { NodeTo.Data }, weight { Weight }, data: { Data.ToString() }"</code>
-            <returns>String of Edge object.</returns>
-        </member>
         <member name="T:Graph.Graph`2">
             <summary>
             Represent a mathematical graph with data in nodes and edges. This version can't be serialized.
             </summary>
             <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
             <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>
+        </member>
+        <member name="M:Graph.Graph`2.GetDepthFirstSearch">
+            <summary>
+            Get traversal with depth-first search algorithm.
+            </summary>
+            <returns>List in order of traversal.</returns>
         </member>
         <member name="M:Graph.Graph`2.GetShortestPathDijkstraAlgorithm(Graph.Node{`0,`1},Graph.Node{`0,`1})">
             <summary>
@@ -137,6 +108,41 @@
             Get all of edge in graph.
             </summary>
             <returns>List of all edges in graph.</returns>
+        </member>
+        <member name="T:Graph.Edge`2">
+            <summary>
+            Object repersent a edge from graph, beetwen two node (node from to node to).
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="P:Graph.Edge`2.NodeFrom">
+            <summary>
+            The begin node.
+            </summary>
+        </member>
+        <member name="P:Graph.Edge`2.NodeTo">
+            <summary>
+            The end node.
+            </summary>
+        </member>
+        <member name="P:Graph.Edge`2.Data">
+            <summary>
+            Edge data.
+            </summary>
+        </member>
+        <member name="P:Graph.Edge`2.Weight">
+            <summary>
+            Edge weight
+            </summary>
+        </member>
+        <member name="M:Graph.Edge`2.ToString">
+            <summary>
+            Convert this object to string.
+            Converting format:
+            </summary>
+            <code>return $"Edge: { NodeFrom.Data } -> { NodeTo.Data }, weight { Weight }, data: { Data.ToString() }"</code>
+            <returns>String of Edge object.</returns>
         </member>
         <member name="T:Graph.Node`2">
             <summary>
