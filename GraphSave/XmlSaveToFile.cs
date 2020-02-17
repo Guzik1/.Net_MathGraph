@@ -9,21 +9,22 @@ namespace GraphSave
 {
     public class XmlSaveToFile<TypeOfNodeData, TypeOfEdgeData> : ISavable<TypeOfNodeData, TypeOfEdgeData>
     {
-        string path;
+        string filePath;
 
-        public XmlSaveToFile(string path) =>
-            this.path = path;
+        public XmlSaveToFile(string filePath) =>
+            this.filePath = filePath;
 
-        public void ChangeDirectory(string path) =>
-            this.path = path;
+        public void ChangeDirectory(string filePath) =>
+            this.filePath = filePath;
 
         public SerializableGraph<TypeOfNodeData, TypeOfEdgeData> Load()
         {
             TextReader reader = null;
+
             try
             {
                 var serializer = new XmlSerializer(typeof(SerializableGraph<TypeOfNodeData, TypeOfEdgeData>));
-                reader = new StreamReader(path);
+                reader = new StreamReader(filePath);
                 return (SerializableGraph<TypeOfNodeData, TypeOfEdgeData>)serializer.Deserialize(reader);
             }
             finally
@@ -37,10 +38,12 @@ namespace GraphSave
         {
             TextWriter writer = null;
 
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
             try
             {
                 var serializer = new XmlSerializer(typeof(SerializableGraph<TypeOfNodeData, TypeOfEdgeData>));
-                writer = new StreamWriter(path);
+                writer = new StreamWriter(filePath);
                 serializer.Serialize(writer, save);
             }
             finally

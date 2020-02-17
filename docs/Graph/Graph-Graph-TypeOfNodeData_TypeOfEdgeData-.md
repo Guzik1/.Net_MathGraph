@@ -1,7 +1,7 @@
 #### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph')
 ## Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt; Class
-This class represent a mathematical graph with data in nodes and edges. This version can't be serialized.  
+Represent a mathematical graph with data in nodes and edges. This version can't be serialized.  
 ```csharp
 public class Graph<TypeOfNodeData,TypeOfEdgeData>
 ```

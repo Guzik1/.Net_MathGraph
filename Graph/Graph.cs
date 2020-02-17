@@ -3,7 +3,7 @@
 namespace Graph
 {
     /// <summary>
-    /// This class represent a mathematical graph with data in nodes and edges. This version can't be serialized.
+    /// Represent a mathematical graph with data in nodes and edges. This version can't be serialized.
     /// </summary>
     /// <typeparam name="TypeOfNodeData">Type of data in nodes.</typeparam>
     /// <typeparam name="TypeOfEdgeData">Type of data in edges.</typeparam>

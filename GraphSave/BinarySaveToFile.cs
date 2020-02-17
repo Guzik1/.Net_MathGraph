@@ -25,7 +25,11 @@ namespace GraphSave
             {
                 Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
-                return (SerializableGraph<TypeOfNodeData, TypeOfEdgeData>) formatter.Deserialize(stream);
+                object output = formatter.Deserialize(stream);
+
+                stream.Close();
+
+                return (SerializableGraph<TypeOfNodeData, TypeOfEdgeData>)output;
             }
 
             throw new IOException("File doesn't exist in path: " + path);

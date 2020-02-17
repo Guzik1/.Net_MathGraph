@@ -1,7 +1,7 @@
 #### [Graph](./index.md 'index')
 ### [Graph.SerializableConverter](./Graph-SerializableConverter.md 'Graph.SerializableConverter').[SerializableGraphConverter&lt;TypeOfNodeData,TypeOfEdgeData&gt;](./Graph-SerializableConverter-SerializableGraphConverter-TypeOfNodeData_TypeOfEdgeData-.md 'Graph.SerializableConverter.SerializableGraphConverter&lt;TypeOfNodeData,TypeOfEdgeData&gt;')
 ## SerializableGraphConverter&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetGraphFromSerializableGraph(Graph.SerializableConverter.SerializableGraph&lt;TypeOfNodeData,TypeOfEdgeData&gt;) Method
-  
+Convert serializable graph to graph.  
 ```csharp
 public Graph.Graph<TypeOfNodeData,TypeOfEdgeData> GetGraphFromSerializableGraph(Graph.SerializableConverter.SerializableGraph<TypeOfNodeData,TypeOfEdgeData> serializedGraph);
 ```
