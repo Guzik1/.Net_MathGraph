@@ -69,6 +69,8 @@ namespace GraphTests
         [Test]
         public void GraphConverterSerializeAndDeserializeTest()
         {
+            SerializableGraphConverter<int, int> sConverter = new SerializableGraphConverter<int, int>(graph);
+
             graph.AddEdge(graph[0], graph[1]);
             graph.AddEdge(graph[0], graph[2]);
             graph.AddEdge(graph[0], graph[3]);
@@ -79,7 +81,6 @@ namespace GraphTests
             Assert.IsNotNull(graph[2, 3]);
             Assert.IsNotNull(graph[1, 3]);
 
-            SerializableGraphConverter<int, int> sConverter = new SerializableGraphConverter<int, int>(graph);
             SerializableGraph<int, int> sGraph = sConverter.GetSerializableGraph();
 
             graph.RemoveEdge(graph[2], graph[3]);
@@ -88,7 +89,7 @@ namespace GraphTests
 
             Assert.AreEqual(4, graph.NodesCount);
 
-            graph = sConverter.SetGraphFromSerializableGraph(sGraph);
+            graph = sConverter.GetGraphFromSerializableGraph(sGraph);
 
             Assert.AreEqual(5, graph.NodesCount);
 

@@ -15,7 +15,7 @@ namespace GraphTests
         [SetUp]
         public void InicjalizeConverterTests()
         {
-            graph = new Graph<int, int>();
+            graph = new Graph<int, int>(true);
 
             for (int i = 0; i < nodeCountToInicjalize; i++)
                 graph.AddNode(i);

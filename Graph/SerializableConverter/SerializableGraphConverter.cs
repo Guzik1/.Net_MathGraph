@@ -23,13 +23,6 @@ namespace Graph.SerializableConverter
             => this.graph = graph;
 
         /// <summary>
-        /// Use this constructor to set a serializable graph reference to convert on graph.
-        /// </summary>
-        /// <param name="serializedGraph">Serializable graph reference.</param>
-        public SerializableGraphConverter(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> serializedGraph)
-            => this.serializedGraph = serializedGraph;
-
-        /// <summary>
         /// Convert graph to serializable graph.
         /// </summary>
         /// <returns>Serializable graph data model.</returns>
@@ -41,32 +34,23 @@ namespace Graph.SerializableConverter
                 IsWeighted = graph.IsWeighted,
 
                 Node = RewriteNodeToSerializableNode(),
-                Edge = RewriteToSerializableEdge()
+                Edge = RewriteEdgeToSerializableEdge()
             };
 
             return serializedGraph;
         }
 
         /// <summary>
-        /// 
+        /// Convert serializable graph to graph.
         /// </summary>
-        /// <returns></returns>
-        public Graph<TypeOfNodeData, TypeOfEdgeData> SetGraphFromSerializableGraph(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> serializedGraph)
+        /// <returns>Graph data model.</returns>
+        public Graph<TypeOfNodeData, TypeOfEdgeData> GetGraphFromSerializableGraph(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> serializedGraph)
         {
             graph = new Graph<TypeOfNodeData, TypeOfEdgeData>(serializedGraph.IsWeighted, serializedGraph.IsDirected);
 
-            RewriteSerializableNodeToNode();
+            RewriteSerializableNodeToNodes();
 
-            //TODO Edge deserializing problem!
-
-            // Edge
-            SerializableEdge<TypeOfEdgeData> edge;
-            for (int i = 0; i < serializedGraph.Edge.Count; i++)
-            {
-                edge = serializedGraph.Edge[i];
-
-                graph.AddEdge(graph[edge.NodeFromId], graph[edge.NodeToId], edge.Weight, edge.Data);
-            }
+            RewriteSerializableEdgeToEdges();
 
             return graph;
         }
@@ -81,13 +65,24 @@ namespace Graph.SerializableConverter
             return serializable;
         }
 
-        void RewriteSerializableNodeToNode()
+        void RewriteSerializableNodeToNodes()
         {
             for (int i = 0; i < serializedGraph.Node.Count; i++)
                 graph.AddNode(serializedGraph.Node[i].Data);
         }
 
-        List<SerializableEdge<TypeOfEdgeData>> RewriteToSerializableEdge()
+        void RewriteSerializableEdgeToEdges()
+        {
+            SerializableEdge<TypeOfEdgeData> edge;
+            for (int i = 0; i < serializedGraph.Edge.Count; i++)
+            {
+                edge = serializedGraph.Edge[i];
+
+                graph.AddEdge(graph[edge.NodeFromId], graph[edge.NodeToId], edge.Weight, edge.Data);
+            }
+        }
+
+        List<SerializableEdge<TypeOfEdgeData>> RewriteEdgeToSerializableEdge()
         {
             if (graph.IsDirected)
                 return SerializeDirectedEdge();

@@ -244,23 +244,17 @@
             </summary>
             <param name="graph">Graph reference.</param>
         </member>
-        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.#ctor(Graph.SerializableConverter.SerializableGraph{`0,`1})">
-            <summary>
-            Use this constructor to set a serializable graph reference to convert on graph.
-            </summary>
-            <param name="serializedGraph">Serializable graph reference.</param>
-        </member>
         <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.GetSerializableGraph">
             <summary>
             Convert graph to serializable graph.
             </summary>
             <returns>Serializable graph data model.</returns>
         </member>
-        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.SetGraphFromSerializableGraph(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+        <member name="M:Graph.SerializableConverter.SerializableGraphConverter`2.GetGraphFromSerializableGraph(Graph.SerializableConverter.SerializableGraph{`0,`1})">
             <summary>
             
             </summary>
-            <returns></returns>
+            <returns>Graph data model.</returns>
         </member>
         <member name="T:Graph.SerializableConverter.SerializableNode`1">
             <summary>
