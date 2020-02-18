@@ -33,7 +33,7 @@ namespace Graph
         /// <summary>
         /// Data edge from this node to neighboring nodes.
         /// </summary>
-        public List<TypeOfEdgeData> EdgeData { get; set; } = new List<TypeOfEdgeData>();
+        public List<TypeOfEdgeData> EdgeData { get; internal set; } = new List<TypeOfEdgeData>();
 
         /// <summary>
         /// Convert this object to string.

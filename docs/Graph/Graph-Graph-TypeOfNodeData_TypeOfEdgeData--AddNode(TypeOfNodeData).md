@@ -3,7 +3,7 @@
 ## Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.AddNode(TypeOfNodeData) Method
 Add node to graph.  
 ```csharp
-public Graph.Node<TypeOfNodeData,TypeOfEdgeData> AddNode(TypeOfNodeData value);
+public Graph.Node<TypeOfNodeData,TypeOfEdgeData> AddNode(TypeOfNodeData value=default(TypeOfNodeData));
 ```
 #### Parameters
 <a name='Graph-Graph-TypeOfNodeData_TypeOfEdgeData--AddNode(TypeOfNodeData)-value'></a>

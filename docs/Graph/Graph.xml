@@ -67,7 +67,7 @@
             </summary>
             <param name="nodeFromId">Node id where the edge begin.</param>
             <param name="nodeToId">Node id where the edge end.</param>
-            <returns>Edge between node FROM and node TO.</returns>
+            <returns>Edge between node FROM and node TO. If edge doesnt exist return null.</returns>
         </member>
         <member name="P:Graph.Graph`2.Item(System.Int32)">
             <summary>

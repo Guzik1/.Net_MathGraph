@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphTests", "GraphTests\Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSaveTests", "GraphSaveTests\GraphSaveTests.csproj", "{19F0F7FD-C10F-4F22-9FAD-04F63FF46506}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{7365725B-0494-472A-9326-CAB8EB62FD73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{19F0F7FD-C10F-4F22-9FAD-04F63FF46506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F0F7FD-C10F-4F22-9FAD-04F63FF46506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19F0F7FD-C10F-4F22-9FAD-04F63FF46506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7365725B-0494-472A-9326-CAB8EB62FD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7365725B-0494-472A-9326-CAB8EB62FD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7365725B-0494-472A-9326-CAB8EB62FD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7365725B-0494-472A-9326-CAB8EB62FD73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

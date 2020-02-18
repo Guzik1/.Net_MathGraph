@@ -5,7 +5,7 @@
     <Version>0.0.2</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Guzik1/.Net_MathGraph</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Guzik1/MathGraph_for_.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Guzik1/.Net_MathGraph</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>

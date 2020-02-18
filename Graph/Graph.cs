@@ -59,7 +59,7 @@ namespace Graph
         /// </summary>
         /// <param name="nodeFromId">Node id where the edge begin.</param>
         /// <param name="nodeToId">Node id where the edge end.</param>
-        /// <returns>Edge between node FROM and node TO.</returns>
+        /// <returns>Edge between node FROM and node TO. If edge doesnt exist return null.</returns>
         public Edge<TypeOfNodeData, TypeOfEdgeData> this[int nodeFromId, int nodeToId]
         {
             get
@@ -111,7 +111,7 @@ namespace Graph
         /// </summary>
         /// <param name="value">Data in node.</param>
         /// <returns>Return added node to list of all nodes.</returns>
-        public Node<TypeOfNodeData, TypeOfEdgeData> AddNode(TypeOfNodeData value)
+        public Node<TypeOfNodeData, TypeOfEdgeData> AddNode(TypeOfNodeData value = default)
         {
             Node<TypeOfNodeData, TypeOfEdgeData> node = new Node<TypeOfNodeData, TypeOfEdgeData>() { Data = value };
 
