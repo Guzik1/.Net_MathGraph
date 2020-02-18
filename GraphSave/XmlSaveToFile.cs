@@ -6,17 +6,24 @@ using System.Text;
 using System.Xml.Serialization;
 
 namespace GraphSave
-{
-    public class XmlSaveToFile<TypeOfNodeData, TypeOfEdgeData> : ISavable<TypeOfNodeData, TypeOfEdgeData>
+{    
+    /// <summary>
+    /// This class is using to load and save, serializable graph, to xml text file. Implement ISavable interface.
+    /// </summary>
+    /// <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+    /// <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+    public class XmlSaveToFile<TypeOfNodeData, TypeOfEdgeData> : DiscGraphSave, ISavable<TypeOfNodeData, TypeOfEdgeData>
     {
-        string filePath;
+        /// <summary>
+        /// Inicjalize XML text save to file and load from file.
+        /// </summary>
+        /// <param name="filePath">Set file path to save/load.</param>
+        public XmlSaveToFile(string filePath) : base(filePath) { }
 
-        public XmlSaveToFile(string filePath) =>
-            this.filePath = filePath;
-
-        public void ChangeDirectory(string filePath) =>
-            this.filePath = filePath;
-
+        /// <summary>
+        /// Load serializable grap from xml text file.
+        /// </summary>
+        /// <returns>Serializable graph loaded from xml text file.</returns>
         public SerializableGraph<TypeOfNodeData, TypeOfEdgeData> Load()
         {
             TextReader reader = null;
@@ -34,6 +41,10 @@ namespace GraphSave
             }
         }
 
+        /// <summary>
+        /// Save serializabe graph to xml text file.
+        /// </summary>
+        /// <param name="save">Serializable graph to save on disc.</param>
         public void Save(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> save)
         {
             TextWriter writer = null;

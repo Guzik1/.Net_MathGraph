@@ -8,22 +8,29 @@ using Graph.SerializableConverter;
 
 namespace GraphSave
 {
-    public class BinarySaveToFile<TypeOfNodeData, TypeOfEdgeData> : ISavable<TypeOfNodeData, TypeOfEdgeData>
+    /// <summary>
+    /// This class is using to load and save, serializable graph, to binary file. Implement ISavable interface.
+    /// </summary>
+    /// <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+    /// <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+    public class BinarySaveToFile<TypeOfNodeData, TypeOfEdgeData> : DiscGraphSave, ISavable<TypeOfNodeData, TypeOfEdgeData>
     {
-        string path;
+        /// <summary>
+        /// Inicjalize binary save to file and load from file.
+        /// </summary>
+        /// <param name="filePath">Set file path to save/load.</param>
+        public BinarySaveToFile(string filePath) : base(filePath) { }
 
-        public BinarySaveToFile(string path) =>
-            this.path = path;
-
-        public void ChangeDirectory(string path) =>
-            this.path = path;
-
+        /// <summary>
+        /// Load serializable grap from bin file.
+        /// </summary>
+        /// <returns>Serializable graph loaded from bin file.</returns>
         public SerializableGraph<TypeOfNodeData, TypeOfEdgeData> Load()
         {
             IFormatter formatter = new BinaryFormatter();
-            if (File.Exists(path))
+            if (File.Exists(filePath))
             {
-                Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
                 object output = formatter.Deserialize(stream);
 
@@ -32,14 +39,18 @@ namespace GraphSave
                 return (SerializableGraph<TypeOfNodeData, TypeOfEdgeData>)output;
             }
 
-            throw new IOException("File doesn't exist in path: " + path);
+            throw new IOException("File doesn't exist in path: " + filePath);
         }
 
+        /// <summary>
+        /// Save serializabe graph to binary file.
+        /// </summary>
+        /// <param name="save">Serializable graph to save on disc.</param>
         public void Save(SerializableGraph<TypeOfNodeData, TypeOfEdgeData> save)
         {
             IFormatter formatter = new BinaryFormatter();
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-            Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            Stream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
 
             formatter.Serialize(stream, save);
             stream.Close();

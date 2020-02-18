@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphSave</name>
+    </assembly>
+    <members>
+        <member name="T:GraphSave.BinarySaveToFile`2">
+            <summary>
+            This class is using to load and save, serializable graph, to binary file. Implement ISavable interface.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="M:GraphSave.BinarySaveToFile`2.#ctor(System.String)">
+            <summary>
+            Inicjalize binary save to file and load from file.
+            </summary>
+            <param name="filePath">Set file path to save/load.</param>
+        </member>
+        <member name="M:GraphSave.BinarySaveToFile`2.Load">
+            <summary>
+            Load serializable grap from bin file.
+            </summary>
+            <returns>Serializable graph loaded from bin file.</returns>
+        </member>
+        <member name="M:GraphSave.BinarySaveToFile`2.Save(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+            <summary>
+            Save serializabe graph to binary file.
+            </summary>
+            <param name="save">Serializable graph to save on disc.</param>
+        </member>
+        <member name="T:GraphSave.DiscGraphSave">
+            <summary>
+            DO NOT USE OUTSIDE!  Implement data file path for other formater class.
+            </summary>
+        </member>
+        <member name="F:GraphSave.DiscGraphSave.filePath">
+            <summary>
+            Path to file.
+            </summary>
+        </member>
+        <member name="M:GraphSave.DiscGraphSave.#ctor(System.String)">
+            <summary>
+            Inicjalize disc save and load to file.
+            </summary>
+            <param name="filePath">Set file path.</param>
+        </member>
+        <member name="M:GraphSave.DiscGraphSave.ChangeDirectory(System.String)">
+            <summary>
+            Change file directory to save/load.
+            </summary>
+            <param name="filePath">File path.</param>
+        </member>
+        <member name="T:GraphSave.ISavable`2">
+            <summary>
+            Implement this interface for using to load and save serializable graph to file.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="M:GraphSave.ISavable`2.Save(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+            <summary>
+            Save serializable graph to file.
+            </summary>
+            <param name="save">Serializable graph data to save.</param>
+        </member>
+        <member name="M:GraphSave.ISavable`2.Load">
+            <summary>
+            Load serializable graph from file.
+            </summary>
+            <returns>Serializable graph.</returns>
+        </member>
+        <member name="T:GraphSave.JsonSaveToFile`2">
+            <summary>
+            This class is using to load and save, serializable graph, to json text file. Implement ISavable interface.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="M:GraphSave.JsonSaveToFile`2.#ctor(System.String)">
+            <summary>
+            Inicjalize JSON text save to file and load from file.
+            </summary>
+            <param name="filePath">Set file path to save/load.</param>
+        </member>
+        <member name="M:GraphSave.JsonSaveToFile`2.Load">
+            <summary>
+            Load serializable grap from json text file.
+            </summary>
+            <returns>Serializable graph loaded from json text file.</returns>
+        </member>
+        <member name="M:GraphSave.JsonSaveToFile`2.Save(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+            <summary>
+            Save serializabe graph to json text file.
+            </summary>
+            <param name="save">Serializable graph to save on disc.</param>
+        </member>
+        <member name="T:GraphSave.XmlSaveToFile`2">
+            <summary>
+            This class is using to load and save, serializable graph, to xml text file. Implement ISavable interface.
+            </summary>
+            <typeparam name="TypeOfNodeData">Type of node data.</typeparam>
+            <typeparam name="TypeOfEdgeData">Type of edge data.</typeparam>
+        </member>
+        <member name="M:GraphSave.XmlSaveToFile`2.#ctor(System.String)">
+            <summary>
+            Inicjalize XML text save to file and load from file.
+            </summary>
+            <param name="filePath">Set file path to save/load.</param>
+        </member>
+        <member name="M:GraphSave.XmlSaveToFile`2.Load">
+            <summary>
+            Load serializable grap from xml text file.
+            </summary>
+            <returns>Serializable graph loaded from xml text file.</returns>
+        </member>
+        <member name="M:GraphSave.XmlSaveToFile`2.Save(Graph.SerializableConverter.SerializableGraph{`0,`1})">
+            <summary>
+            Save serializabe graph to xml text file.
+            </summary>
+            <param name="save">Serializable graph to save on disc.</param>
+        </member>
+    </members>
+</doc>
