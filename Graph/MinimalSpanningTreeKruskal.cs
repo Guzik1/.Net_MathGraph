@@ -7,8 +7,8 @@ namespace Graph
     public partial class Graph<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
-        /// Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph.
-        /// Use for low and medium edge dense in graph, compared to node count. Edge is E, node V: O(E log V);
+        /// Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph. USE FOR WEIGHTED GRAPH.
+        /// Use for low and medium edge dense in graph, compared to node count. Edge E, node V: O(E log V);
         /// </summary>
         /// <returns>List of edge including minimal spanning tree.</returns>
         public List<Edge<TypeOfNodeData, TypeOfEdgeData>> GetMinimalSpanningTreeKruskal()

@@ -27,7 +27,7 @@
         </member>
         <member name="M:Graph.Graph`2.GetShortestPathDijkstraAlgorithm(Graph.Node{`0,`1},Graph.Node{`0,`1})">
             <summary>
-            Algorithm to get a short Dijkstra path.
+            Algorithm to get a short Dijkstra path. USE FOR WEIGHTED GRAPH.
             </summary>
             <param name="source">Source node to start of the path.</param>
             <param name="target">Destination node to end of the path.</param>
@@ -119,15 +119,15 @@
         </member>
         <member name="M:Graph.Graph`2.GetMinimalSpanningTreePrim">
             <summary>
-            Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph.
-            Use for high edge dense in graph, compared to node count. Edge is E, node V: O(E + V log V);
+            Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph. USE FOR WEIGHTED GRAPH.
+            Use for high edge dense in graph, compared to node count. Edge E, node V: O(E + V log V);
             </summary>
             <returns>List of edge including minimal spanning tree.</returns>
         </member>
         <member name="M:Graph.Graph`2.GetMinimalSpanningTreeKruskal">
             <summary>
-            Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph.
-            Use for low and medium edge dense in graph, compared to node count. Edge is E, node V: O(E log V);
+            Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph. USE FOR WEIGHTED GRAPH.
+            Use for low and medium edge dense in graph, compared to node count. Edge E, node V: O(E log V);
             </summary>
             <returns>List of edge including minimal spanning tree.</returns>
         </member>

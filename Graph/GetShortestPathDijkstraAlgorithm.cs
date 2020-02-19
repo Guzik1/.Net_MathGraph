@@ -8,7 +8,7 @@ namespace Graph
     public partial class Graph<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
-        /// Algorithm to get a short Dijkstra path.
+        /// Algorithm to get a short Dijkstra path. USE FOR WEIGHTED GRAPH.
         /// </summary>
         /// <param name="source">Source node to start of the path.</param>
         /// <param name="target">Destination node to end of the path.</param>
@@ -44,13 +44,15 @@ namespace Graph
             Inicjalize();
 
             // For performance, don't refactor this loop;
+            Node<TypeOfNodeData, TypeOfEdgeData> node;
+            Node<TypeOfNodeData, TypeOfEdgeData> neighbor;
             while (nodes.Count != 0)
             {
-                Node<TypeOfNodeData, TypeOfEdgeData> node = nodes.Dequeue();
+                node = nodes.Dequeue();
 
                 for (int i = 0; i < node.Neighbors.Count; i++)
                 {
-                    Node<TypeOfNodeData, TypeOfEdgeData> neighbor = node.Neighbors[i];
+                    neighbor = node.Neighbors[i];
 
                     int weight = i < node.Weights.Count ? node.Weights[i] : 0;
                     int weightTotal = distances[node.Index] + weight;

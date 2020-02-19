@@ -1,8 +1,8 @@
 #### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph').[Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData-.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;')
 ## Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetMinimalSpanningTreeKruskal() Method
-Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph.  
-Use for low and medium edge dense in graph, compared to node count. Edge is E, node V: O(E log V);  
+Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph. USE FOR WEIGHTED GRAPH.  
+Use for low and medium edge dense in graph, compared to node count. Edge E, node V: O(E log V);  
 ```csharp
 public System.Collections.Generic.List<Graph.Edge<TypeOfNodeData,TypeOfEdgeData>> GetMinimalSpanningTreeKruskal();
 ```

@@ -7,8 +7,8 @@ namespace Graph
     public partial class Graph<TypeOfNodeData, TypeOfEdgeData>
     {
         /// <summary>
-        /// Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph.
-        /// Use for high edge dense in graph, compared to node count. Edge is E, node V: O(E + V log V);
+        /// Get minimal spanning tree from graph. MST is a minimal weight connect to all node in graph. USE FOR WEIGHTED GRAPH.
+        /// Use for high edge dense in graph, compared to node count. Edge E, node V: O(E + V log V);
         /// </summary>
         /// <returns>List of edge including minimal spanning tree.</returns>
         public List<Edge<TypeOfNodeData, TypeOfEdgeData>> GetMinimalSpanningTreePrim()
@@ -36,24 +36,12 @@ namespace Graph
         {
             InicjalizeAlgorithm();
 
-            for(int i = 0; i < graph.NodesCount - 1; i++)
+            for (int i = 0; i < graph.NodesCount - 1; i++)
             {
-                int minWeightIndex = GetMinimumWeightIndex();
+                int minWeightIndex = GetMinimumEdgeWeightIndex();
                 isInMinimalSpanningTree[minWeightIndex] = true;
 
-                Edge<TypeOfNodeData, TypeOfEdgeData> edge;
-                for (int j = 0; j < graph.NodesCount; j++)
-                {
-                    edge = graph[minWeightIndex, j];
-
-                    int weight = edge != null ? edge.Weight : -1;
-
-                    if(edge != null && !isInMinimalSpanningTree[j] && weight < minWeight[j])
-                    {
-                        previous[j] = minWeightIndex;
-                        minWeight[j] = weight;
-                    }
-                }
+                CheckEdgesAndUpdate(minWeightIndex);
             }
 
             BuildResault();
@@ -74,14 +62,14 @@ namespace Graph
             Fill(isInMinimalSpanningTree, false);
         }
 
-        int GetMinimumWeightIndex()
+        int GetMinimumEdgeWeightIndex()
         {
             int minValue = int.MaxValue;
             int minIndex = 0;
 
-            for(int i = 0; i < graph.NodesCount; i++)
+            for (int i = 0; i < graph.NodesCount; i++)
             {
-                if(IndexIsntInMinimalSpanningTreeAndWeightIsSmaller(i, minValue))
+                if (IndexIsNotInMinimalSpanningTreeAndWeightIsSmaller(i, minValue))
                 {
                     minValue = minWeight[i];
                     minIndex = i;
@@ -91,8 +79,33 @@ namespace Graph
             return minIndex;
         }
 
-        bool IndexIsntInMinimalSpanningTreeAndWeightIsSmaller(int index, int value)
+        bool IndexIsNotInMinimalSpanningTreeAndWeightIsSmaller(int index, int value)
             => !isInMinimalSpanningTree[index] && value > minWeight[index];
+
+        void CheckEdgesAndUpdate(int minWeightIndex)
+        {
+            Edge<TypeOfNodeData, TypeOfEdgeData> edge;
+            for (int j = 0; j < graph.NodesCount; j++)
+            {
+                edge = graph[minWeightIndex, j];
+
+                if (edge != null)
+                {
+                    int weight = edge.Weight;
+
+                    WhenEdgeIsNotInMSTandWeightLessUpdate(j, weight, minWeightIndex);
+                }
+            }
+        }
+
+        void WhenEdgeIsNotInMSTandWeightLessUpdate(int nodeToIndex, int weight, int minWeightIndex)
+        {
+            if (!isInMinimalSpanningTree[nodeToIndex] && weight < minWeight[nodeToIndex])
+            {
+                previous[nodeToIndex] = minWeightIndex;
+                minWeight[nodeToIndex] = weight;
+            }
+        }
 
         void BuildResault()
         {

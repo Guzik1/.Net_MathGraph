@@ -1,7 +1,7 @@
 #### [Graph](./index.md 'index')
 ### [Graph](./Graph.md 'Graph').[Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData-.md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;')
 ## Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetShortestPathDijkstraAlgorithm(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;, Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;) Method
-Algorithm to get a short Dijkstra path.  
+Algorithm to get a short Dijkstra path. USE FOR WEIGHTED GRAPH.  
 ```csharp
 public System.Collections.Generic.List<Graph.Edge<TypeOfNodeData,TypeOfEdgeData>> GetShortestPathDijkstraAlgorithm(Graph.Node<TypeOfNodeData,TypeOfEdgeData> source, Graph.Node<TypeOfNodeData,TypeOfEdgeData> target);
 ```
