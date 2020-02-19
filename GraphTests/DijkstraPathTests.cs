@@ -6,13 +6,13 @@ using Graph;
 
 namespace GraphTests
 {
-    public class DijkstraPathTests
+    public class ShortestDijkstraPathTests
     {
         // For Dijkstra pathfinding algorithm, must use weighted graph.
         Graph<int, int> graph = new Graph<int, int>(true);
 
         [Test]
-        public void ShortedPathDijkstraAlgorithmTests()
+        public void GetShortestPathDijkstraAlgorithm_WhenCalled_ShouldReturnShortestPath()
         {
             InicjalizeGraph(10);
 

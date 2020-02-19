@@ -24,7 +24,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void GraphSerializebleConverterNodesTest()
+        public void GetSerializableGraph()
         {
             SerializableGraphConverter<int, int> converter = new SerializableGraphConverter<int, int>(graph);
             SerializableGraph<int, int> sGraph = converter.GetSerializableGraph();

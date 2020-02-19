@@ -13,7 +13,7 @@ namespace GraphTests
         int nodeCountToInicjalize = 4;
 
         [SetUp]
-        public void InicjalizeConverterTests()
+        public void InicjalizeGraph()
         {
             graph = new Graph<int, int>(true);
 

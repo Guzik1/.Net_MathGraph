@@ -32,7 +32,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void MSTKruskal()
+        public void GetMinimalSpanningTreeKruskal_WhenCalled_ShouldReturnMinimalSpanningTreeListOfEdge()
         {
             List<Edge<int, int>> mst = graph.GetMinimalSpanningTreeKruskal();
 
@@ -43,7 +43,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void MSTPrim()
+        public void GetMinimalSpanningTreePrim_WhenCalled_ShouldReturnMinimalSpanningTreeListOfEdge()
         {
             List<Edge<int, int>> mst = graph.GetMinimalSpanningTreePrim();
 
