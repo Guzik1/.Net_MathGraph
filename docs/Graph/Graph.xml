@@ -18,20 +18,18 @@
             <param name="fromNode">Node from algorithm start.</param>
             <returns>List in order of traversal.</returns>
         </member>
+        <member name="M:Graph.Graph`2.GetColors">
+            <summary>
+            Color a graph nodes. Get a color numbers for nodes in graph.
+            </summary>
+            <returns>Array of color number for index node.</returns>
+        </member>
         <member name="M:Graph.Graph`2.GetDepthFirstSearch(Graph.Node{`0,`1})">
             <summary>
             Get traversal with depth-first search algorithm.
             </summary>
             <param name="fromNode">Node from algorithm start.</param>
             <returns>List in order of traversal.</returns>
-        </member>
-        <member name="M:Graph.Graph`2.GetShortestPathDijkstraAlgorithm(Graph.Node{`0,`1},Graph.Node{`0,`1})">
-            <summary>
-            Algorithm to get a short Dijkstra path. USE FOR WEIGHTED GRAPH.
-            </summary>
-            <param name="source">Source node to start of the path.</param>
-            <param name="target">Destination node to end of the path.</param>
-            <returns></returns>
         </member>
         <member name="P:Graph.Graph`2.IsDirected">
             <summary>
@@ -130,6 +128,14 @@
             Use for low and medium edge dense in graph, compared to node count. Edge E, node V: O(E log V);
             </summary>
             <returns>List of edge including minimal spanning tree.</returns>
+        </member>
+        <member name="M:Graph.Graph`2.GetShortestPathDijkstraAlgorithm(Graph.Node{`0,`1},Graph.Node{`0,`1})">
+            <summary>
+            Algorithm to get a short Dijkstra path. USE FOR WEIGHTED GRAPH.
+            </summary>
+            <param name="source">Source node to start of the path.</param>
+            <param name="target">Destination node to end of the path.</param>
+            <returns></returns>
         </member>
         <member name="T:Graph.Edge`2">
             <summary>

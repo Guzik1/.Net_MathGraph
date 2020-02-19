@@ -20,6 +20,8 @@ namespace Examples
 
             Edge<int, int> edge01 = graph[0, 1];  // return edge between node 0 and 1.
             Edge<int, int> edge10 = graph[1, 0]; // return null, because node 1 canot connect to node 0.
+
+            Console.WriteLine(edge01.Weight);
         }
 
         void AddNodes(int count)

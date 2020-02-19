@@ -15,6 +15,8 @@ namespace Examples
 
             List<Edge<int, int>> mst = graph.GetMinimalSpanningTreeKruskal(); // Get minimal spanning tree, kruskal algorithm (form low and medium edge dense).
             mst = graph.GetMinimalSpanningTreePrim();  // Get minimal spanning tree, prim algorithm (form high edge dense).
+
+            mst.ForEach((n) => Console.WriteLine(n.NodeFrom + " - " + n.NodeTo + ", weight: " + n.Weight));
         }
 
         public void SetUp()

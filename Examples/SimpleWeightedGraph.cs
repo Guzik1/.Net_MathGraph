@@ -20,6 +20,8 @@ namespace Examples
             graph.AddEdge(graph[0], graph[3], 2, 1024); // weight = 2, data in edge = 1024.
 
             graph.RemoveEdge(graph[0], graph[1]);
+
+            Console.WriteLine(graph[0].ToString());
         }
 
         void AddNodes(int count)

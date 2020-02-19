@@ -25,6 +25,8 @@ namespace Examples
             graph.AddEdge(graph[0], graph[4], 24);
 
             List<Edge<int, int>> shortestPath = graph.GetShortestPathDijkstraAlgorithm(graph[0], graph[5]); // Get shortest path, between node 0 and node 5.
+
+            shortestPath.ForEach((n) => Console.WriteLine(n.NodeFrom + " -> " + n.NodeTo + ", weight: " + n.Weight));
         }
 
         void AddNodes(int count)

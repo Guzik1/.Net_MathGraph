@@ -30,6 +30,7 @@ Type of data in edges.
 - [AddNode(TypeOfNodeData)](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--AddNode(TypeOfNodeData).md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.AddNode(TypeOfNodeData)')
 - [GetAllEdges()](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--GetAllEdges().md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetAllEdges()')
 - [GetBreadthFirstSearch(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;)](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--GetBreadthFirstSearch(Graph-Node-TypeOfNodeData_TypeOfEdgeData-).md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetBreadthFirstSearch(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;)')
+- [GetColors()](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--GetColors().md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetColors()')
 - [GetDepthFirstSearch(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;)](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--GetDepthFirstSearch(Graph-Node-TypeOfNodeData_TypeOfEdgeData-).md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetDepthFirstSearch(Graph.Node&lt;TypeOfNodeData,TypeOfEdgeData&gt;)')
 - [GetMinimalSpanningTreeKruskal()](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--GetMinimalSpanningTreeKruskal().md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetMinimalSpanningTreeKruskal()')
 - [GetMinimalSpanningTreePrim()](./Graph-Graph-TypeOfNodeData_TypeOfEdgeData--GetMinimalSpanningTreePrim().md 'Graph.Graph&lt;TypeOfNodeData,TypeOfEdgeData&gt;.GetMinimalSpanningTreePrim()')
