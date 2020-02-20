@@ -7,13 +7,16 @@ This project is a simple implement a mathematical graph library that provides st
 - generic data in node and edge
 - supports weighted graph
 - supports directed graph
+- minimal spanning tree Kruskal and Prim algorithm (for weighted graph)
 - shortest Dijkstra path algorithm (for weighted graph)
-- save graph system
+- node coloring
+- traversal
+- save graph system (save to file).
 - graph to serializable graph and conversely converter (easy to save)!
 
 ## Setup
 Compiling bin library is located in /bin folder. <br />
-Copy Graph and Priority Queue (.dll files) to your project. <br />
+Copy Graph and Priority Queue (.dll files) to your project (and GraphSave when you save graph to file).<br />
 NuGet package available soon.
 
 ## Simple code example
@@ -42,8 +45,9 @@ Console.WriteLine(edge01.Data); /* or */  Console.WriteLine(graph[0, 1].Data);
 graph.RemoveEdge(node0, graph[1]); // remove edge beetwen node 0 and 1
 graph.RemoveNode(graph[0]);  /* or */  graph.RemoveNode(node0);  // node 1 becomes to node 0
 ```
-For more information, you must view [documentation](https://github.com/Guzik1/.Net_MathGraph/blob/master/docs/Graph/index.md). <br />
-Examples available here (TODO! make examples).
+For more information, you must view [Graph documentation](https://github.com/Guzik1/MathGraph_for_.Net/blob/master/docs/Graph/index.md). <br />
+When you save a graph, view [GraphSave documentation](https://github.com/Guzik1/MathGraph_for_.Net/blob/master/docs/GraphSave/GraphSave.md).<br />
+Examples available [here](https://github.com/Guzik1/MathGraph_for_.Net/tree/master/Examples).
 
 ## Built with
 - .Net Core 3.1
