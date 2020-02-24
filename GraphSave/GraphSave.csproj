@@ -2,22 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageProjectUrl>https://github.com/Guzik1/MathGraph_for_.Net</PackageProjectUrl>
+    <PackageProjectUrl></PackageProjectUrl>
     <Copyright>MIT</Copyright>
     <RepositoryUrl>https://github.com/Guzik1/MathGraph_for_.Net</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
+    <PackageId>MathGraphSave</PackageId>
+    <Authors>Sebastian Guzik</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>A:\Visual studio project\GraphGit\docs\GraphSave\GraphSave.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.5.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Graph\Graph.csproj" />
