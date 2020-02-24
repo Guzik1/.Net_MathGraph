@@ -15,9 +15,10 @@ This project is a simple implement a mathematical graph library that provides st
 - graph to serializable graph and conversely converter (easy to save)!
 
 ## Setup
+MathGraph available in [Nuget package](https://www.nuget.org/packages/MathGraph/). <br />
+MathGraphSave available in [Nuget package](https://www.nuget.org/packages/MathGraphSave/1.0.0). <br />
 Compiling bin library is located in /bin folder. <br />
 Copy Graph and Priority Queue (.dll files) to your project (and GraphSave when you save graph to file).<br />
-NuGet package available soon.
 
 ## Simple code example
 Data in node and edge is int. Graph is unweighted and undirected (simple graph)
